@@ -1,0 +1,717 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StudyAuraX Kids — Colour the Real World</title><style>
+:root{font-family:ui-rounded,'Trebuchet MS',system-ui,sans-serif;color:#153047}*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#b5edff,#fdf6db 52%,#c8efad);min-height:100vh}header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 22px;background:#ffffffd9;box-shadow:0 3px 16px #21475b12;flex-wrap:wrap}.brand{font-size:clamp(24px,3vw,36px);font-weight:1000;letter-spacing:-1.5px}.brand span{color:#fa8c35}.sub{font-size:12px;text-align:center;margin-top:-5px}.music{display:flex;align-items:center;gap:8px;background:#f6f8ff;padding:9px 12px;border-radius:18px;font-size:13px}.music input{width:80px}.layout{display:grid;grid-template-columns:210px minmax(0,1fr) 255px;gap:14px;padding:14px;max-width:1700px;margin:auto}.panel{background:#ffffffee;border-radius:23px;box-shadow:0 5px 18px #204b5914;padding:14px}.sidebar button{width:100%;margin:5px 0;text-align:left}.section-title{font-weight:900;font-size:20px;margin:4px 0 12px}.category{background:#eaf5ff!important}.category.active{background:#ffe1a3!important}.animal.active{border:3px solid #ffaf3e;background:#fff3d9}button{font:inherit;font-weight:800;cursor:pointer;border:2px solid #e5e8ea;background:#fff;border-radius:15px;padding:10px;color:#173249}button:focus-visible{outline:3px solid #2788eb;outline-offset:2px}button.active{background:#c7e9ff;border-color:#259ee7}button:disabled{opacity:.45;cursor:default}.animal{display:flex;align-items:center;gap:10px}.emoji{font-size:28px}.workspace{min-width:0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;margin-bottom:10px}.canvasWrap{position:relative;aspect-ratio: 900/690;background:white;border:2px solid #e9e7e0;border-radius:18px;overflow:hidden;touch-action:none}.canvasWrap svg,.canvasWrap canvas{position:absolute;inset:0;width:100%;height:100%}.canvasWrap svg{display:block}.canvasWrap canvas{pointer-events:none}.canvasWrap.brush canvas,.canvasWrap.eraser canvas{pointer-events:auto}.region{stroke:#26343a;stroke-width:5;stroke-linejoin:round;stroke-linecap:round;cursor:pointer;transition:fill .12s}.region:focus{stroke:#1689d1;stroke-width:8;outline:none}.detail{fill:none;stroke:#293942;stroke-width:3;stroke-linecap:round;pointer-events:none}.partlabel{font-size:17px;font-weight:900;fill:#152e3d;text-anchor:middle;paint-order:stroke;stroke:white;stroke-width:5;pointer-events:none}.caption{font-size:13px;color:#536a79}.reference{height:180px;border-radius:17px;display:grid;place-items:center;background:linear-gradient(#c8ecff,#fff3c6);overflow:hidden}.reference svg{height:100%;max-width:100%}.reference-title{font-size:30px;font-weight:1000;margin:10px 0 0}.swatches{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}.swatch{height:42px;width:42px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 1px #9b9b9b;cursor:pointer}.swatch.active{box-shadow:0 0 0 4px #268be3}.palette-name{font-weight:800;font-size:13px}.hint{background:#fff2d9;border-radius:15px;padding:13px;font-size:14px;line-height:1.55}.bottom{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}.bottom button.active{background:#bdeaff}.bottom .save{background:#31c668;color:white;border-color:#23b557;margin-left:auto}.status{font-size:14px;font-weight:800;color:#227b4b;padding:8px}.tiny{font-size:12px;color:#536a79}.progress{height:10px;background:#e7edf1;border-radius:10px;overflow:hidden}.progress div{height:100%;background:#54be76;transition:width .2s}@media(max-width:1000px){.layout{grid-template-columns:170px 1fr}.guide{grid-column:1/-1;display:grid;grid-template-columns:170px 1fr;gap:12px}.reference{height:160px}.reference-title{margin:0}}@media(max-width:650px){.layout{display:flex;flex-direction:column;padding:8px;gap:8px}.sidebar{display:flex;overflow:auto;gap:8px;align-items:center}.sidebar .section-title{display:none}.sidebar button{min-width:max-content}.workspace{padding:9px}.guide{display:block}.reference{height:140px}.canvasWrap{aspect-ratio:900/690}.partlabel{font-size:17px}header{padding:8px 12px}.music{width:100%;justify-content:center}}
+.partlabel{pointer-events:none}
+.scoreCard{margin:14px 0;padding:16px;border-radius:20px;background:linear-gradient(135deg,#e4f7ff,#fff0c5);border:2px solid #ffdc8c;text-align:center}.scoreTop{font-size:13px;font-weight:900;letter-spacing:.05em;color:#47647a}.scoreValue{font-size:54px;font-weight:1000;color:#173b63;line-height:1.15}.scoreTrack{height:19px;background:#fff;border-radius:99px;overflow:hidden;border:2px solid #d8e7eb;margin:12px 0}.scoreFill{height:100%;width:0;background:linear-gradient(90deg,#5dd7a1,#ffce51);transition:width .35s ease}.scoreStars{font-size:23px;letter-spacing:4px}.scoreMessage{font-size:14px;font-weight:850;margin-top:8px;min-height:38px}.badgeEarned{display:none;padding:9px;margin-top:9px;border-radius:13px;background:#ffe293;color:#6d4504;font-weight:1000}.badgeEarned.show{display:block}.sparkles{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}.sparkle{position:absolute;font-size:27px;animation:popFall 1.5s ease-out forwards}@keyframes popFall{0%{opacity:0;transform:translateY(0) scale(.4) rotate(0)}20%{opacity:1;transform:translateY(-20px) scale(1.2)}100%{opacity:0;transform:translateY(130px) scale(.8) rotate(90deg)}}@media(prefers-reduced-motion:reduce){.sparkle{animation:none;display:none}.scoreFill{transition:none}}
+.playlist{max-width:1200px;margin:12px auto 0;background:#fffdf5;border:3px solid #f6d88b;border-radius:22px;padding:18px;box-shadow:0 5px 18px #204b5914}.playlist[hidden]{display:none}.playlistHeading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.songList{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:9px;margin:12px 0}.songLink{display:flex;align-items:center;gap:9px;text-decoration:none;background:#eef8ff;color:#153047;border:2px solid #d7e9fa;border-radius:13px;padding:11px;font-weight:800}.songLink:hover,.songLink:focus-visible{background:#d9edff;outline:2px solid #268be3}.songLink small{display:block;color:#526879;font-weight:500}.songNumber{border-radius:50%;background:#ffdf8d;padding:7px;min-width:32px;text-align:center}.music{flex-wrap:wrap}
+/* V9 colourful discovery home */
+body{background:radial-gradient(circle at 10% 10%,#fff7a0 0,transparent 30%),linear-gradient(145deg,#7edbff,#c4f8e6 48%,#ffdd9b)}
+header{background:linear-gradient(100deg,#0967bf,#139cde);color:white}
+header .brand span{color:#ffe56d}.music{background:#ffffffee;color:#153047}
+#homeButton{background:#ffe778;color:#124477;border:0}
+.discovery{max-width:1450px;margin:18px auto;padding:22px;border-radius:30px;background:#ffffffd9;box-shadow:0 14px 40px #15467424}
+.discovery h1{font-size:clamp(29px,5vw,53px);margin:0;color:#13518d;text-align:center}
+.discovery .lead{text-align:center;font-weight:800;color:#47627c}
+.categoryGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:15px;margin-top:22px}
+.discoveryCard{min-height:205px;text-align:left;border:3px solid #ffffff;background:linear-gradient(155deg,var(--c),#fff 125%);box-shadow:0 8px 18px #16395b20;border-radius:25px;padding:16px;transition:transform .15s}
+.discoveryCard:hover{transform:translateY(-4px)}
+.discoveryCard .big{display:block;font-size:64px;text-align:center;filter:drop-shadow(0 4px 2px #0001)}
+.discoveryCard strong{display:block;font-size:22px;margin:7px 0}
+.discoveryCard small{font-size:13px;color:#375a70}
+.homeFooter{text-align:center;padding:18px;font-weight:900;color:#14527d}
+#gameArea[hidden],#homeScreen[hidden]{display:none!important}
+@media(max-width:600px){.discovery{margin:8px;padding:13px}.categoryGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.discoveryCard{padding:10px;min-height:170px}.discoveryCard .big{font-size:48px}.discoveryCard strong{font-size:16px}}
+.partlabel{paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round;fill:#26374b;font-weight:900}
+.region{stroke:#26374b;stroke-width:3.5;stroke-linejoin:round}
+.discoveryCard:focus-visible,.region:focus-visible{outline:4px solid #ff9d18;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.discoveryCard{transition:none}}
+</style></head><body><header><div><div class="brand">StudyAuraX <span>Kids</span> 🎨</div><div class="sub">COLOUR THE REAL WORLD</div></div><div class="music"><button id="homeButton">🏠 Home</button><span>🎵 Music</span><button id="musicBtn" aria-label="Play original background music">▶ Play original tune</button><label>Volume <input id="volume" type="range" min="0" max="100" value="35"></label><button id="playlistToggle" aria-expanded="false" aria-controls="playlist">🎶 Top 10 songs</button></div></header><section id="playlist" class="playlist" hidden aria-label="Popular children's songs"><div class="playlistHeading"><div><strong>🎶 10 favourite kids' songs</strong><div class="tiny">Tap a song to open its official YouTube search in a new tab. Original recordings are not included in this app.</div></div><button id="playlistClose" aria-label="Close song list">✕</button></div><div id="songList" class="songList"></div><p class="tiny">For safe browsing, a parent should help younger children open YouTube. Our original instrumental can play inside this app; YouTube music needs authorised playback or licensing.</p></section><section aria-label="Colouring categories" id="homeScreen" class="discovery"><h1>🌈 Colour & Explore the World!</h1><p class="lead">Explore 26 colouring pages, discover real-world colours, and earn your stars! ⭐</p><div id="categoryGrid" class="categoryGrid"></div><div class="homeFooter">🖍️ Big colouring spaces • 💾 Auto-save on this device • 🏆 Live stars • 🎵 Optional original music</div></section><div id="gameArea" hidden><main class="layout"><aside class="panel sidebar"><div class="section-title">Explore 🌈</div><button class="category active" data-cat="Animals">🐾 Animals</button><button class="category" data-cat="Birds">🐦 Birds</button><button class="category" data-cat="Vehicles">🚗 Vehicles</button><div id="choices"></div></aside><section class="panel workspace"><div class="toolbar"><div><button id="undo">↶ Undo</button> <button id="redo">↷ Redo</button> <button id="clear">🗑 Restart</button></div><button id="download">⬇ Save picture</button></div><div id="canvasWrap" class="canvasWrap"><svg id="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 690" aria-label="Colouring drawing"></svg><canvas id="draw"></canvas></div><div class="bottom"><button class="active" data-tool="fill">🪣 Fill</button><button data-tool="brush">🖌 Brush</button><button data-tool="eraser">◻ Eraser</button><label>Brush size <input id="size" type="range" min="5" max="45" value="17"></label><span class="tiny">✨ Progress updates automatically!</span></div><div class="status" id="status" aria-live="polite">Pick a colour and tap a matching part of the lion!</div><div class="progress"><div id="progress" style="width:0%"></div></div></section><aside class="panel guide"><div class="reference" id="reference"></div><div class="scoreCard" aria-live="polite" aria-atomic="true"><div class="scoreTop">MY COLOURING ADVENTURE</div><div class="scoreValue" id="scoreValue">0%</div><div class="scoreTrack" role="progressbar" aria-label="Colouring completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="scoreTrack"><div class="scoreFill" id="scoreFill"></div></div><div class="scoreStars" id="scoreStars">☆☆☆☆</div><div class="scoreMessage" id="scoreMessage">Colour your first part to begin! 🦁</div><div class="badgeEarned" id="badgeEarned">🏅 Colouring Star Badge earned!</div></div><div><div class="reference-title" id="name">Lion</div><div class="caption">Use the colours written inside the picture. Each part has a real-world colour guide.</div><div class="swatches" id="swatches"></div><div class="palette-name" id="selectedName"></div><div class="hint" id="hint"></div><p class="tiny">For animals with natural colour variation, this page shows one typical example. Tap-to-fill checks the selected colour. Brush mode lets you draw freely using the same palette.</p></div></aside></main></div><div class="sparkles" id="sparkles" aria-hidden="true"></div>
+<script>
+const palettes={gold:['Golden yellow','#E5AD4D'],brown:['Brown','#8F582C'],dark:['Dark brown','#503523'],black:['Black','#343638'],cream:['Cream','#F6E8C8'],grey:['Grey','#858B90'],pink:['Pink','#F1A1B2'],white:['White','#FFFFFF'],orange:['Orange','#ED9B31'],yellow:['Yellow','#F9D43B'],red:['Red','#DF4D42'],blue:['Blue','#469BD1']};
+const specs={
+Lion:{cat:'Animals',emoji:'🦁',colors:['gold','brown','dark','black','cream'],hint:'Golden yellow: coat and legs. Brown: full mane. Cream: muzzle, chest and paws. Dark brown: nose. Black: tail tuft. This is one natural lion colour variation.',parts:[
+['tail','gold','M708 333 Q780 352 791 409 Q801 451 779 483 L764 469 Q783 415 752 388 Q728 368 690 363 Z',765,396,'Golden yellow'],
+['tailtip','black','M777 463 Q804 458 812 479 Q817 507 794 529 Q769 525 757 500 Q757 478 777 463 Z',789,499,'Black'],
+['farhindleg','gold','M630 400 Q659 398 677 428 L691 554 Q682 578 656 574 L637 553 L621 473 Z',663,501,'Golden yellow'],
+['farhindpaw','cream','M639 552 Q662 541 689 552 Q705 558 708 579 Q703 592 680 591 L635 591 Q622 578 639 552 Z',669,577,'Cream'],
+['farfrontleg','gold','M409 389 Q441 381 465 404 L481 550 Q473 573 447 569 L424 543 L403 439 Z',447,488,'Golden yellow'],
+['farfrontpaw','cream','M433 552 Q453 543 480 552 Q499 559 500 579 Q496 593 474 593 L431 593 Q414 583 433 552 Z',464,577,'Cream'],
+['body','gold','M387 281 Q496 229 628 263 Q720 276 743 357 Q755 404 708 446 Q672 464 613 437 L555 426 Q510 448 465 423 L393 402 Z',579,332,'Golden yellow'],
+['belly','cream','M479 398 Q556 416 622 406 Q596 451 541 465 Q499 457 479 398 Z',544,440,'Cream'],
+['hindleg','gold','M663 383 Q710 376 727 418 Q744 467 727 517 L733 556 L680 563 Q657 524 670 481 Q636 445 663 383 Z',702,489,'Golden yellow'],
+['hindpaw','cream','M681 546 Q710 537 738 552 Q755 560 756 582 Q747 599 722 597 L676 597 Q659 584 681 546 Z',713,577,'Cream'],
+['frontleg','gold','M331 397 Q369 382 399 411 Q414 441 404 482 L408 558 L337 560 L325 477 Z',369,482,'Golden yellow'],
+['frontpaw','cream','M335 546 Q370 533 407 548 Q430 558 428 581 Q418 601 387 600 L333 600 Q313 585 335 546 Z',369,578,'Cream'],
+['mane','brown','M168 168 Q181 121 236 108 Q262 65 323 91 Q371 65 410 112 Q470 122 479 179 Q520 218 497 266 Q527 314 495 358 Q504 412 462 436 Q446 492 396 481 Q353 511 311 480 Q250 507 222 459 Q162 457 154 409 Q111 383 132 326 Q98 287 130 244 Q117 193 168 168 Z',308,421,'Brown'],
+['earL','gold','M212 194 Q174 167 172 213 Q180 247 221 244 Z',192,218,'Golden yellow'],
+['earR','gold','M388 190 Q432 167 435 212 Q428 247 389 245 Z',412,218,'Golden yellow'],
+['face','gold','M233 194 Q296 149 369 188 Q411 225 397 298 Q386 351 331 370 Q265 368 234 318 Q213 265 233 194 Z',311,239,'Golden yellow'],
+['muzzle','cream','M258 295 Q288 283 314 302 Q344 282 372 296 Q380 341 338 359 L301 359 Q260 347 258 295 Z',316,335,'Cream'],
+['nose','dark','M293 295 Q314 284 336 295 L320 316 L309 316 Z',315,302,'Dark brown']
+],details:'<path class="detail" d="M255 266 Q277 250 296 262 M341 263 Q360 250 379 266 M315 315 L315 330 M315 329 Q299 341 282 331 M315 329 Q337 342 354 329 M181 270 Q166 337 198 389 M211 157 Q252 120 288 133 M364 126 Q414 143 448 191 M450 291 Q483 338 455 387 M240 414 Q281 468 312 468 M378 458 Q419 454 445 412 M344 575 L344 592 M362 572 L363 595 M386 573 L386 595 M688 569 L687 589 M710 563 L711 591 M730 568 L734 591"/><ellipse cx="276" cy="266" rx="7" ry="9" fill="#20282b"/><ellipse cx="355" cy="266" rx="7" ry="9" fill="#20282b"/><path class="detail" d="M239 304 L208 294 M243 317 L207 319 M377 304 L404 295 M378 320 L407 321"/>'},
+Elephant:{cat:'Animals',emoji:'🐘',colors:['grey','cream','black'],hint:'Skin: grey. Tusks: cream. Eyes and toenails: black or grey.',parts:[['body','grey','M270 239 Q380 152 554 235 Q658 272 654 415 L637 558 L578 558 L571 415 L491 422 L473 563 L414 563 L406 415 Q330 436 273 375 Z',459,310,'Grey'],['ear','grey','M277 223 Q181 156 158 272 Q160 361 271 351 L316 286 Z',223,280,'Grey'],['head','grey','M286 205 Q356 184 387 250 Q407 310 374 355 L371 494 Q362 531 337 524 Q321 514 331 483 L328 369 Q266 351 254 289 Q243 241 286 205 Z',328,266,'Grey'],['tusk','cream','M383 332 Q435 347 425 392 Q408 376 386 367 Z',408,361,'Cream'],['eye','black','M352 269 Q359 263 367 270 Q362 281 352 269 Z',358,272,'Black']],details:'<path class="detail" d="M279 266 Q230 302 262 335 M332 406 Q355 419 373 409 M343 465 Q356 473 369 465"/>'},
+Giraffe:{cat:'Animals',emoji:'🦒',colors:['gold','brown','dark','black'],hint:'Base coat: golden yellow. Patches: brown. Hooves and tail tip: dark brown.',parts:[['body','gold','M358 328 Q488 277 641 346 L650 556 L601 556 L591 430 L477 432 L466 561 L418 561 L415 421 L355 415 Z',507,372,'Golden yellow'],['neck','gold','M321 171 L376 176 L404 353 L352 400 L302 357 Z',355,269,'Golden yellow'],['head','gold','M285 142 Q314 104 364 130 L399 159 L382 207 L328 211 L286 183 Z',340,165,'Golden yellow'],['patch1','brown','M445 341 L498 333 L522 366 L483 396 L445 379 Z',482,365,'Brown'],['patch2','brown','M546 345 L588 355 L574 398 L531 385 Z',558,371,'Brown'],['patch3','brown','M325 226 L358 215 L373 251 L344 273 Z',348,241,'Brown'],['patch4','brown','M340 297 L377 281 L388 319 L355 342 Z',364,313,'Brown'],['hooves','dark','M414 550 L468 550 L468 574 L414 574 Z',439,562,'Dark brown'],['tail','dark','M642 369 Q700 412 678 483 L657 474 Q675 423 640 409 Z',674,458,'Dark brown']],details:'<path class="detail" d="M310 142 L299 107 M348 130 L356 96 M314 154 Q325 147 336 154"/><circle cx="326" cy="157" r="5"/>'},
+Penguin:{cat:'Birds',emoji:'🐧',colors:['black','white','orange'],hint:'Back, head and wings: black. Belly: white. Beak and feet: orange.',parts:[['body','black','M450 106 Q559 109 590 260 Q611 425 555 543 L354 543 Q292 428 314 265 Q337 118 450 106 Z',445,196,'Black'],['wingL','black','M328 286 Q267 327 247 472 Q272 509 333 435 Z',294,391,'Black'],['wingR','black','M568 290 Q636 336 651 478 Q626 505 566 435 Z',607,393,'Black'],['belly','white','M454 253 Q527 245 547 336 Q573 448 522 522 L384 522 Q337 438 362 337 Q379 255 454 253 Z',450,395,'White'],['beak','orange','M422 233 L478 233 L451 267 Z',449,245,'Orange'],['footL','orange','M375 526 Q339 558 349 577 L437 577 L424 527 Z',391,560,'Orange'],['footR','orange','M474 527 L529 526 Q561 559 547 578 L465 578 Z',511,560,'Orange']],details:'<circle cx="415" cy="215" r="8" fill="white"/><circle cx="490" cy="215" r="8" fill="white"/><circle cx="416" cy="216" r="4"/><circle cx="489" cy="216" r="4"/>'},
+'Flamingo':{cat:'Birds',emoji:'🦩',colors:['pink','black','cream'],hint:'Feathers and neck: pink. Beak: cream with a black tip.',parts:[['body','pink','M342 345 Q389 284 496 305 Q565 337 537 418 Q486 478 396 443 Q349 422 342 345 Z',443,375,'Pink'],['neck','pink','M493 321 Q525 260 480 216 Q432 161 464 112 Q500 82 538 114 L527 145 Q494 124 488 150 Q481 168 517 208 Q573 280 536 350 Z',511,281,'Pink'],['head','pink','M468 104 Q500 73 543 104 L565 137 L536 169 L485 154 Z',511,117,'Pink'],['beak','cream','M554 122 Q603 137 610 162 L574 176 L535 150 Z',571,150,'Cream'],['tip','black','M592 148 L610 162 L574 176 L576 157 Z',592,163,'Black'],['legL','pink','M432 434 L450 434 L446 582 L430 582 Z',437,521,'Pink'],['legR','pink','M490 438 L506 433 L526 559 L511 562 Z',514,520,'Pink']],details:'<circle cx="529" cy="122" r="5"/>'},
+'School bus':{cat:'Vehicles',emoji:'🚌',colors:['yellow','black','grey','blue','white','red'],hint:'Yellow school bus, blue windows, black tyres, grey bumpers and red rear light.',parts:[
+['chassis','grey','M154 441 L738 441 L738 483 L154 483 Z',449,462,'Grey'],
+['body','yellow','M169 263 Q174 219 230 217 L636 217 Q689 222 710 273 L727 448 L162 448 Z',448,383,'Yellow'],
+['rearWindow','blue','M195 252 L314 252 L314 337 L195 337 Z',252,291,'Blue'],
+['middleWindow','blue','M335 252 L449 252 L449 337 L335 337 Z',392,291,'Blue'],
+['frontWindow','blue','M469 252 L580 252 L580 337 L469 337 Z',525,291,'Blue'],
+['door','yellow','M599 251 L666 251 Q687 256 689 290 L695 446 L599 446 Z',644,391,'Yellow'],
+['doorGlass','blue','M613 266 L654 266 Q668 270 671 293 L674 344 L613 344 Z',643,308,'Blue'],
+['stripe','black','M177 371 L705 371 L709 385 L177 385 Z',447,379,'Black'],
+['bumperFront','grey','M704 435 L763 435 L763 463 L707 463 Z',735,451,'Grey'],
+['bumperRear','grey','M125 435 L179 435 L179 463 L125 463 Z',150,451,'Grey'],
+['rearLight','red','M168 390 L183 390 L183 420 L168 420 Z',175,405,'Red'],
+['headlight','white','M704 393 L723 393 L723 420 L704 420 Z',714,406,'White'],
+['wheelRear','black','M273 461 m-61 0 a61 61 0 1 0 122 0 a61 61 0 1 0 -122 0',273,461,'Black'],
+['wheelFront','black','M610 461 m-61 0 a61 61 0 1 0 122 0 a61 61 0 1 0 -122 0',610,461,'Black'],
+['hubRear','grey','M273 461 m-27 0 a27 27 0 1 0 54 0 a27 27 0 1 0 -54 0',273,461,'Grey'],
+['hubFront','grey','M610 461 m-27 0 a27 27 0 1 0 54 0 a27 27 0 1 0 -54 0',610,461,'Grey']
+],details:'<path class="detail" d="M599 350 L690 350 M646 350 L646 445 M203 407 L580 407 M226 233 L596 233" />'},
+'Fire engine':{cat:'Vehicles',emoji:'🚒',colors:['red','black','grey','blue'],hint:'Truck: red. Tyres: black. Ladder and bumper: grey. Windows: blue.',parts:[['body','red','M141 313 L498 313 L498 260 L650 260 L727 351 L727 469 L141 469 Z',363,412,'Red'],['window','blue','M532 289 L625 289 L684 352 L532 352 Z',593,321,'Blue'],['ladder','grey','M188 246 L552 246 L552 277 L188 277 Z',366,261,'Grey'],['bumper','grey','M124 449 L749 449 L749 484 L124 484 Z',430,468,'Grey'],['wheel1','black','M231 453 A59 59 0 1 0 349 453 A59 59 0 1 0 231 453',290,453,'Black'],['wheel2','black','M548 453 A59 59 0 1 0 666 453 A59 59 0 1 0 548 453',608,453,'Black']],details:'<path class="detail" d="M210 247 V277 M254 247 V277 M299 247 V277 M343 247 V277 M388 247 V277 M432 247 V277 M477 247 V277"/>'}
+};
+
+
+// Wildlife Collection V6: original, large-region animal illustrations.
+Object.assign(specs, {
+ Zebra:{cat:'Animals',emoji:'🦓',colors:['white','black','dark'],hint:'Zebras have white coats with black stripes, dark hooves and a black mane.',parts:[
+ ['tail','black','M690 321 Q750 358 741 432 L715 445 Q730 383 680 347 Z',724,406,'Black'],
+ ['backLeg','white','M594 400 L642 405 L654 566 L609 566 Z',630,511,'White'],
+ ['backHoof','dark','M607 555 L658 555 L665 583 L603 583 Z',633,572,'Dark brown'],
+ ['farFrontLeg','white','M410 403 L451 406 L444 565 L404 565 Z',425,510,'White'],
+ ['farHoof','dark','M400 555 L449 555 L454 583 L395 583 Z',423,572,'Dark brown'],
+ ['body','white','M286 275 Q402 215 582 263 Q667 274 690 351 Q669 423 603 426 L437 422 L393 395 L329 374 Z',504,335,'White'],
+ ['nearBackLeg','white','M553 403 L605 406 L594 564 L546 564 Z',571,497,'White'],
+ ['nearBackHoof','dark','M543 553 L598 553 L604 584 L539 584 Z',570,571,'Dark brown'],
+ ['neck','white','M299 278 L355 260 L313 155 L268 167 L239 261 Z',291,222,'White'],
+ ['mane','black','M316 156 L339 260 L359 268 L334 145 Z',341,207,'Black'],
+ ['ear1','white','M254 155 L245 93 Q276 104 285 153 Z',261,123,'White'],
+ ['ear2','white','M290 153 L304 99 Q327 118 312 167 Z',306,130,'White'],
+ ['head','white','M226 151 Q273 122 320 159 Q342 203 299 248 L230 237 Q198 204 226 151 Z',266,191,'White'],
+ ['muzzle','white','M208 217 Q249 208 300 225 Q316 253 286 266 L221 261 Q196 246 208 217 Z',252,240,'White'],
+ ['stripe1','black','M363 264 L387 259 L414 415 L386 397 Z',386,323,'Black'],
+ ['stripe2','black','M429 255 L451 257 L484 419 L454 421 Z',451,322,'Black'],
+ ['stripe3','black','M507 256 L533 260 L561 421 L529 419 Z',527,328,'Black'],
+ ['stripe4','black','M580 267 L604 277 L632 406 L608 419 Z',605,339,'Black'],
+ ['neckStripe','black','M294 173 L313 182 L336 256 L315 265 Z',318,222,'Black'],
+ ['frontLeg','white','M353 384 L405 395 L391 565 L343 565 Z',373,496,'White'],
+ ['frontHoof','dark','M339 553 L397 553 L402 584 L335 584 Z',368,572,'Dark brown']
+ ],details:'<path class="detail" d="M250 185 q12 -12 25 0 M278 183 q12 -10 22 2 M219 236 q12 7 25 0 M264 238 q10 6 21 0"/>'},
+ Tiger:{cat:'Animals',emoji:'🐅',colors:['orange','black','cream','white'],hint:'Tiger fur: orange with black stripes. Chest and muzzle: cream or white.',parts:[
+ ['tail','orange','M654 328 Q741 296 747 376 Q745 435 696 440 L688 418 Q723 400 721 376 Q712 345 656 358 Z',721,380,'Orange'],
+ ['backLeg','orange','M591 401 L646 406 L653 558 L602 558 Z',625,506,'Orange'],
+ ['backPaw','cream','M598 550 L662 550 Q679 581 651 584 L595 584 Z',630,568,'Cream'],
+ ['farLeg','orange','M402 398 L454 400 L447 559 L399 559 Z',422,505,'Orange'],
+ ['farPaw','cream','M395 550 L454 550 L465 583 L393 583 Z',424,568,'Cream'],
+ ['body','orange','M299 274 Q415 211 587 267 Q681 296 672 378 Q656 428 589 430 L405 423 Q341 414 302 356 Z',492,340,'Orange'],
+ ['belly','cream','M380 391 Q487 412 603 393 L583 426 L412 427 Z',489,412,'Cream'],
+ ['frontLeg','orange','M331 389 L393 398 L382 560 L330 560 Z',357,501,'Orange'],
+ ['frontPaw','cream','M327 551 L392 551 Q413 581 381 586 L324 586 Z',356,572,'Cream'],
+ ['nearBackLeg','orange','M539 407 L589 411 L583 560 L532 560 Z',558,502,'Orange'],
+ ['nearBackPaw','cream','M527 550 L588 550 L603 585 L525 585 Z',559,570,'Cream'],
+ ['earL','black','M210 181 Q193 123 244 143 L267 183 Z',229,163,'Black'],
+ ['earR','black','M336 173 Q368 123 395 167 L368 199 Z',366,169,'Black'],
+ ['head','orange','M222 171 Q296 125 376 183 Q410 254 367 315 Q298 353 224 307 Q181 255 222 171 Z',296,231,'Orange'],
+ ['cheek','cream','M221 269 Q286 288 364 269 Q360 327 298 334 Q244 327 221 269 Z',294,303,'Cream'],
+ ['nose','black','M280 274 Q298 264 317 274 L299 293 Z',299,279,'Black'],
+ ['stripe1','black','M390 260 L413 250 L449 397 L426 406 Z',417,323,'Black'],
+ ['stripe2','black','M470 247 L495 248 L526 411 L499 412 Z',492,328,'Black'],
+ ['stripe3','black','M555 257 L579 266 L609 403 L585 413 Z',576,331,'Black'],
+ ['faceStripe1','black','M231 191 L250 187 L270 241 L247 250 Z',251,218,'Black'],
+ ['faceStripe2','black','M342 189 L361 201 L346 253 L325 244 Z',346,221,'Black']
+ ],details:'<path class="detail" d="M260 259 q13 -13 26 0 M316 259 q13 -13 26 0 M300 290 v13 m0 0 q-13 12 -28 0 m28 0 q15 12 29 0"/>'},
+ Panda:{cat:'Animals',emoji:'🐼',colors:['white','black'],hint:'Pandas have white faces and bodies with black ears, eye patches, legs and shoulders.',parts:[
+ ['rearLeg','black','M582 405 Q643 390 651 454 L638 563 L568 563 Z',607,496,'Black'],
+ ['rearPaw','black','M560 545 L650 545 Q682 580 640 590 L559 590 Z',604,570,'Black'],
+ ['farLeg','black','M406 401 L467 407 L456 563 L393 563 Z',427,495,'Black'],
+ ['farPaw','black','M390 545 L462 545 Q487 580 448 589 L386 589 Z',425,569,'Black'],
+ ['body','white','M298 294 Q392 222 555 250 Q676 266 683 371 Q674 449 571 453 L420 446 Q342 431 298 367 Z',497,339,'White'],
+ ['shoulder','black','M314 290 Q363 252 419 261 L462 438 L399 441 Q335 407 306 361 Z',386,342,'Black'],
+ ['nearLeg','black','M351 409 L422 420 L405 558 L341 558 Z',379,492,'Black'],
+ ['nearPaw','black','M336 547 L411 547 Q438 585 395 590 L333 590 Z',372,572,'Black'],
+ ['earL','black','M193 179 Q176 123 226 130 Q254 139 251 187 Z',220,159,'Black'],
+ ['earR','black','M334 168 Q351 117 390 141 Q411 169 372 195 Z',368,159,'Black'],
+ ['head','white','M203 177 Q287 115 374 185 Q413 254 374 319 Q302 366 219 319 Q170 259 203 177 Z',291,220,'White'],
+ ['eyePatchL','black','M219 221 Q245 191 274 220 Q283 253 249 270 Q217 257 219 221 Z',247,239,'Black'],
+ ['eyePatchR','black','M309 222 Q337 191 367 224 Q368 257 335 269 Q305 256 309 222 Z',337,240,'Black'],
+ ['muzzle','white','M255 270 Q292 258 331 272 Q344 315 295 326 Q251 315 255 270 Z',295,298,'White'],
+ ['nose','black','M276 275 Q297 265 314 277 L296 296 Z',295,283,'Black']
+ ],details:'<path class="detail" d="M239 232 l6 0 M328 232 l7 0 M295 296 v11 m0 0 q-13 8 -24 0 m24 0 q13 8 24 0"/>'}
+});
+
+// Anatomy-completion pass: additional large, individually colourable regions.
+const extraParts = {
+  Elephant: [
+    ['rearFarLeg','grey','M605 402 L648 410 L669 564 L610 564 Z',640,524,'Grey'],
+    ['frontFarLeg','grey','M376 391 L425 396 L420 564 L369 564 Z',394,523,'Grey'],
+    ['tail','grey','M643 283 Q705 350 685 453 L671 452 Q680 366 632 325 Z',681,391,'Grey'],
+    ['rearToenails','cream','M580 548 L641 548 L646 567 L575 567 Z',611,559,'Cream'],
+    ['frontToenails','cream','M414 551 L473 551 L477 571 L410 571 Z',443,562,'Cream']
+  ],
+  Giraffe: [
+    ['rearFarLeg','gold','M609 416 L645 420 L667 554 L626 554 Z',643,512,'Golden yellow'],
+    ['frontFarLeg','gold','M476 416 L512 418 L505 554 L466 554 Z',489,516,'Golden yellow'],
+    ['rearHoof','dark','M622 548 L671 548 L674 575 L621 575 Z',646,563,'Dark brown'],
+    ['frontHoof','dark','M462 548 L510 548 L510 575 L461 575 Z',484,563,'Dark brown'],
+    ['ear','gold','M294 148 Q255 123 265 106 Q291 101 316 138 Z',285,126,'Golden yellow']
+  ],
+  Penguin: [
+    ['tail','black','M412 519 L488 519 L517 565 Q452 553 383 564 Z',449,540,'Black']
+  ],
+  Flamingo: [
+    ['wing','pink','M390 344 Q453 315 515 351 Q507 407 437 414 Q394 402 390 344 Z',449,373,'Pink'],
+    ['footL','pink','M430 570 L449 570 L472 588 L410 588 Z',439,581,'Pink'],
+    ['footR','pink','M511 553 L529 552 L551 579 L491 579 Z',522,570,'Pink']
+  ]
+};
+for (const [animal, parts] of Object.entries(extraParts)) specs[animal].parts.push(...parts);
+
+
+// V7: re-drawn wildlife silhouettes, distinct paws/hooves and natural markings.
+// All illustrations are original SVG artwork, not copied photographs.
+const realisticWildlife = {
+Zebra: {
+ cat:'Animals',emoji:'🦓',colors:['white','black','dark'],hint:'White coat, black stripes and mane, and dark hooves. Colour each labelled region!',
+ parts:[
+ ['tail','black','M706 300 Q767 327 772 403 Q775 447 746 485 L731 469 Q757 428 744 393 Q731 357 696 340 Z',754,412,'Black'],
+ ['rearFarLeg','white','M600 410 Q635 401 646 435 L669 557 L622 565 L601 484 Z',633,513,'White'],
+ ['rearFarHoof','dark','M621 553 L674 552 Q686 576 668 589 L618 589 Z',647,573,'Dark'],
+ ['frontFarLeg','white','M399 396 L447 399 L438 553 L392 560 Z',419,503,'White'],
+ ['frontFarHoof','dark','M390 552 L444 550 L446 583 L382 584 Z',412,570,'Dark'],
+ ['body','white','M296 270 Q375 223 503 238 Q626 236 685 286 Q724 335 699 400 Q672 449 584 446 L431 439 Q355 435 307 390 Z',506,335,'White'],
+ ['rearNearLeg','white','M630 393 Q682 382 698 424 Q701 466 681 495 L695 558 L644 565 Q626 527 639 478 Q609 443 630 393 Z',665,513,'White'],
+ ['rearNearHoof','dark','M643 550 L700 550 Q722 576 700 590 L637 590 Z',673,573,'Dark'],
+ ['frontNearLeg','white','M340 393 Q370 384 401 404 L401 479 L397 557 L344 559 Q337 501 329 449 Z',369,506,'White'],
+ ['frontNearHoof','dark','M339 551 L400 551 Q419 574 399 589 L336 589 Z',369,573,'Dark'],
+ ['neck','white','M303 284 Q294 235 270 203 L260 166 Q285 135 317 158 Q345 203 383 265 L396 320 L347 345 Z',322,247,'White'],
+ ['mane','black','M307 149 Q323 151 334 176 L345 207 L376 267 L355 281 Q327 225 299 179 Z',342,222,'Black'],
+ ['earBack','white','M281 156 Q275 107 295 96 Q321 117 314 160 Z',295,131,'White'],
+ ['earFront','white','M245 164 Q213 128 223 106 Q255 112 272 160 Z',245,139,'White'],
+ ['head','white','M229 157 Q255 137 299 150 Q322 169 318 202 L304 233 Q294 258 264 267 L226 253 Q204 224 213 192 Z',260,195,'White'],
+ ['muzzle','white','M222 226 Q251 222 286 230 Q308 245 285 269 Q254 279 223 260 Z',253,249,'White'],
+ ['nose','dark','M217 241 Q231 232 241 244 L236 259 L220 255 Z',230,247,'Dark'],
+ ['stripeShoulder','black','M354 278 Q375 270 390 266 L423 434 L403 431 Z',391,345,'Black'],
+ ['stripeMid1','black','M422 244 L445 240 L478 438 L453 438 Z',448,329,'Black'],
+ ['stripeMid2','black','M501 239 L524 241 L548 442 L522 440 Z',521,338,'Black'],
+ ['stripeRear','black','M584 247 L610 257 L626 424 L603 439 Z',605,335,'Black'],
+ ['stripeNeck','black','M281 195 L300 202 L340 298 L324 310 Z',313,255,'Black'],
+ ['stripeFace','black','M259 155 L269 153 L268 217 L255 217 Z',263,184,'Black'],
+ ['stripeForeleg','black','M340 460 L398 474 L399 490 L341 478 Z',366,475,'Black'],
+ ['stripeHindleg','black','M642 483 L681 489 L684 508 L639 501 Z',663,497,'Black']
+ ],
+ details:'<path class="detail" d="M235 199 Q247 188 261 199 M265 198 Q276 191 288 201 M242 259 Q263 271 283 254 M335 391 Q362 399 398 400 M640 410 Q672 422 678 457 M348 520 L398 525 M644 533 L690 529"/><path d="M249 200 Q254 194 259 200" stroke="#18232a" stroke-width="6" fill="none"/>'
+},
+Tiger: {
+ cat:'Animals',emoji:'🐅',colors:['orange','black','cream','white'],hint:'Orange fur, bold black stripes, pale cream belly and muzzle, four distinct paws.',
+ parts:[
+ ['tail','orange','M695 323 Q774 305 790 378 Q804 429 765 459 L749 445 Q778 413 768 385 Q757 350 697 354 Z',763,362,'Orange'],
+ ['tailTip','black','M750 438 Q766 423 784 426 Q792 451 765 466 Z',770,445,'Black'],
+ ['rearFarLeg','orange','M590 402 L641 409 L659 555 L609 560 Z',627,507,'Orange'],
+ ['rearFarPaw','cream','M603 548 Q641 542 667 558 Q686 582 657 589 L597 589 Z',632,572,'Cream'],
+ ['frontFarLeg','orange','M411 393 L461 404 L449 553 L402 558 Z',432,500,'Orange'],
+ ['frontFarPaw','cream','M400 546 Q430 543 460 556 Q480 579 450 589 L394 589 Z',426,573,'Cream'],
+ ['body','orange','M309 278 Q417 219 547 237 Q660 248 705 314 Q734 375 688 417 Q643 452 565 440 L430 437 Q359 422 315 380 Z',508,330,'Orange'],
+ ['belly','cream','M403 406 Q508 424 611 402 Q589 455 504 461 Q448 453 403 406 Z',501,439,'Cream'],
+ ['rearNearLeg','orange','M631 392 Q682 384 698 423 Q712 473 690 511 L705 556 L646 561 Q632 525 646 482 Q616 445 631 392 Z',669,507,'Orange'],
+ ['rearNearPaw','cream','M646 548 Q676 542 711 557 Q728 580 700 592 L642 592 Z',675,574,'Cream'],
+ ['frontNearLeg','orange','M337 390 Q376 379 409 408 L410 472 L405 557 L344 558 L330 454 Z',369,497,'Orange'],
+ ['frontNearPaw','cream','M341 548 Q375 539 408 551 Q435 578 408 594 L337 594 Z',375,573,'Cream'],
+ ['earLeft','black','M212 191 Q189 136 232 131 Q261 140 264 184 Z',231,163,'Black'],
+ ['earRight','black','M342 182 Q363 127 396 146 Q413 172 374 205 Z',372,164,'Black'],
+ ['head','orange','M224 173 Q289 132 359 167 Q412 207 398 274 Q385 331 315 355 Q243 349 209 300 Q181 241 224 173 Z',307,214,'Orange'],
+ ['leftCheek','cream','M209 274 Q240 279 279 302 L295 347 Q232 336 209 294 Z',246,308,'Cream'],
+ ['rightCheek','cream','M322 302 Q364 274 398 269 L385 304 Q354 343 309 350 Z',356,311,'Cream'],
+ ['muzzle','cream','M269 285 Q297 271 326 285 Q352 308 319 331 L282 330 Q252 311 269 285 Z',298,310,'Cream'],
+ ['nose','black','M281 281 Q302 271 322 283 L305 299 L294 299 Z',303,287,'Black'],
+ ['bodyStripe1','black','M393 247 L413 241 L442 424 L419 416 Z',415,333,'Black'],
+ ['bodyStripe2','black','M464 236 L486 236 L510 437 L486 434 Z',484,333,'Black'],
+ ['bodyStripe3','black','M537 236 L562 239 L587 438 L561 437 Z',555,334,'Black'],
+ ['bodyStripe4','black','M610 257 L631 268 L655 423 L631 434 Z',631,338,'Black'],
+ ['faceStripeLeft','black','M232 191 L248 180 L267 253 L248 256 Z',248,218,'Black'],
+ ['faceStripeRight','black','M356 178 L372 191 L356 257 L337 250 Z',357,215,'Black'],
+ ['forelegStripe','black','M341 455 L405 469 L407 486 L341 474 Z',369,470,'Black'],
+ ['rearLegStripe','black','M641 475 L695 484 L691 502 L643 493 Z',667,489,'Black']
+ ],
+ details:'<path class="detail" d="M257 257 Q273 246 287 260 M319 260 Q336 246 350 259 M303 299 L303 313 M303 314 Q285 326 272 315 M303 314 Q321 326 336 314 M355 550 l0 30 m25 -30 l0 30 M661 550 l0 29 m24 -29 l0 29"/><circle cx="275" cy="260" r="5" fill="#26323a"/><circle cx="335" cy="260" r="5" fill="#26323a"/>'
+},
+Panda: {
+ cat:'Animals',emoji:'🐼',colors:['white','black'],hint:'White head and body; black ears, eye patches, shoulders, legs and paws.',
+ parts:[
+ ['rearFarLeg','black','M592 401 Q641 390 662 438 L670 555 L612 560 L587 477 Z',628,510,'Black'],
+ ['rearFarPaw','black','M608 546 Q648 541 673 558 Q691 583 661 591 L604 591 Z',636,572,'Black'],
+ ['frontFarLeg','black','M414 397 L469 402 L455 558 L404 558 Z',431,502,'Black'],
+ ['frontFarPaw','black','M400 549 L459 547 Q478 579 448 591 L395 590 Z',429,573,'Black'],
+ ['body','white','M307 292 Q388 225 525 234 Q651 239 701 325 Q722 396 673 434 Q618 465 530 447 L415 437 Q335 420 307 366 Z',508,333,'White'],
+ ['rearNearLeg','black','M628 393 Q678 389 696 435 Q704 486 685 520 L700 557 L644 559 Q630 525 640 477 Q613 443 628 393 Z',667,503,'Black'],
+ ['rearNearPaw','black','M642 546 Q673 539 704 557 Q726 583 696 594 L638 594 Z',674,574,'Black'],
+ ['shoulder','black','M314 292 Q362 252 412 264 Q443 331 459 421 L411 440 Q340 416 310 361 Z',380,341,'Black'],
+ ['frontNearLeg','black','M344 398 Q383 387 415 412 L415 471 L405 560 L347 558 L334 459 Z',375,496,'Black'],
+ ['frontNearPaw','black','M341 548 Q380 541 414 555 Q432 582 406 592 L337 592 Z',373,574,'Black'],
+ ['leftEar','black','M205 183 Q174 133 213 118 Q252 120 266 175 Z',223,151,'Black'],
+ ['rightEar','black','M335 169 Q358 118 396 135 Q422 162 379 204 Z',370,159,'Black'],
+ ['head','white','M205 175 Q267 130 346 159 Q410 196 405 272 Q395 340 325 358 Q243 361 204 313 Q167 246 205 175 Z',298,208,'White'],
+ ['eyePatchLeft','black','M217 222 Q245 192 274 222 Q288 261 253 281 Q219 268 217 222 Z',246,241,'Black'],
+ ['eyePatchRight','black','M319 220 Q349 190 380 225 Q382 265 345 280 Q313 261 319 220 Z',347,243,'Black'],
+ ['muzzle','white','M261 275 Q301 258 338 278 Q351 315 314 333 Q272 337 258 311 Z',302,303,'White'],
+ ['nose','black','M283 280 Q303 269 324 282 L306 300 L296 300 Z',305,286,'Black']
+ ],
+ details:'<circle cx="247" cy="243" r="6" fill="white"/><circle cx="347" cy="243" r="6" fill="white"/><path class="detail" d="M304 300 L304 315 M304 315 Q289 328 274 313 M304 315 Q319 328 333 313 M353 552 l0 27 m26 -27 l0 27 M655 551 l0 28 m25 -28 l0 28"/>'
+}
+};
+Object.assign(specs,realisticWildlife);
+
+
+// V8 original animal colouring pages.
+Object.assign(specs,{
+'Brown bear':{cat:'Animals',emoji:'🐻',colors:['brown','cream','dark','black'],hint:'Brown fur, cream muzzle, dark nose and paws.',parts:[
+['rearFarLeg','brown','M588 391 Q643 380 666 432 L676 548 L619 553 L593 466 Z',636,492,'Brown'],
+['rearFarPaw','dark','M611 541 L682 540 Q710 572 677 584 L606 584 Z',645,566,'Dark'],
+['frontFarLeg','brown','M386 388 L445 400 L433 551 L381 555 Z',407,489,'Brown'],
+['frontFarPaw','dark','M377 545 L439 545 Q461 570 438 584 L371 584 Z',406,565,'Dark'],
+['body','brown','M290 278 Q367 214 503 224 Q635 219 700 308 Q728 374 684 420 Q634 454 530 440 L407 428 Q337 417 292 364 Z',495,324,'Brown'],
+['rearNearLeg','brown','M629 389 Q679 377 698 426 Q708 479 684 519 L700 554 L643 556 Q627 516 638 474 Z',665,492,'Brown'],
+['rearNearPaw','dark','M639 542 L706 542 Q729 571 704 588 L635 588 Z',670,566,'Dark'],
+['frontNearLeg','brown','M323 388 Q368 373 406 408 L407 473 L397 553 L340 555 L318 445 Z',364,489,'Brown'],
+['frontNearPaw','dark','M335 542 L406 542 Q433 569 405 587 L330 587 Z',367,565,'Dark'],
+['leftEar','brown','M198 197 Q170 149 202 129 Q241 119 260 179 Z',217,159,'Brown'],
+['rightEar','brown','M337 176 Q356 120 392 133 Q422 157 384 204 Z',372,157,'Brown'],
+['head','brown','M215 170 Q282 128 353 166 Q407 205 393 275 Q383 335 317 350 Q240 348 204 300 Q176 233 215 170 Z',295,209,'Brown'],
+['muzzle','cream','M244 273 Q300 244 357 274 Q378 317 330 338 L265 334 Q233 313 244 273 Z',301,297,'Cream'],
+['nose','black','M279 273 Q305 261 331 278 L309 301 L297 301 Z',306,284,'Black']
+],details:'<circle cx="257" cy="242" r="7" fill="#242424"/><circle cx="342" cy="242" r="7" fill="#242424"/><path class="detail" d="M304 301 V316 Q288 330 273 316 M304 316 Q320 330 335 316 M354 548 v25 m23 -25 v25 M656 547 v25 m22 -25 v25"/>'},
+'Fox':{cat:'Animals',emoji:'🦊',colors:['orange','cream','black'],hint:'Orange coat and tail, cream chest and tail tip, black legs and nose.',parts:[
+['tail','orange','M627 336 Q728 272 789 332 Q816 381 777 425 Q716 448 656 407 Z',733,364,'Orange'],
+['tailTip','cream','M759 318 Q801 337 795 385 Q788 413 763 419 Q778 377 759 318 Z',781,367,'Cream'],
+['rearFarLeg','orange','M590 391 L631 396 L651 552 L609 553 Z',622,491,'Orange'],
+['rearFarPaw','black','M605 544 L655 544 L666 574 L598 575 Z',630,561,'Black'],
+['frontFarLeg','orange','M394 388 L436 395 L429 552 L390 553 Z',413,492,'Orange'],
+['frontFarPaw','black','M387 543 L438 543 L444 574 L381 575 Z',413,560,'Black'],
+['body','orange','M317 281 Q415 232 543 249 Q652 252 686 324 Q705 391 646 426 Q567 454 445 425 Q364 416 320 371 Z',506,330,'Orange'],
+['chest','cream','M341 350 Q377 370 421 391 Q448 421 459 445 Q387 429 341 397 Z',395,401,'Cream'],
+['rearNearLeg','orange','M624 389 Q675 382 686 429 L671 496 L685 553 L637 554 Q616 507 625 465 Z',651,483,'Orange'],
+['rearNearPaw','black','M632 543 L689 543 L699 575 L626 575 Z',660,562,'Black'],
+['frontNearLeg','orange','M340 390 Q371 378 403 399 L406 462 L397 552 L346 552 Z',372,486,'Orange'],
+['frontNearPaw','black','M342 541 L404 541 L411 575 L337 575 Z',370,560,'Black'],
+['earLeft','orange','M217 196 L209 105 Q248 114 269 179 Z',235,152,'Orange'],
+['earRight','orange','M310 176 L366 103 L367 209 Z',341,154,'Orange'],
+['head','orange','M207 184 Q274 145 342 179 Q379 206 368 267 L312 315 L249 308 L181 274 Z',281,223,'Orange'],
+['muzzle','cream','M183 268 Q249 255 282 281 L315 311 Q255 329 206 294 Z',244,291,'Cream'],
+['nose','black','M174 261 L194 253 L203 275 L183 281 Z',188,268,'Black']
+],details:'<path class="detail" d="M236 236 Q247 229 257 235 M313 236 Q325 230 337 239 M244 293 Q269 303 293 301 M354 548 v22 m24 -22 v22 M645 548 v22 m21 -22 v22"/><circle cx="247" cy="236" r="5" fill="#292929"/><circle cx="323" cy="236" r="5" fill="#292929"/>'},
+'Rabbit':{cat:'Animals',emoji:'🐇',colors:['grey','cream','pink','black'],hint:'Grey fur, cream cheeks and belly, pink inner ears and a fluffy cream tail attached to the body.',parts:[
+['tail','cream','M545 440 Q563 424 582 433 Q599 414 613 434 Q635 432 630 451 Q651 465 635 480 Q647 501 625 505 Q619 527 600 512 Q579 523 568 503 L545 486 Z',625,474,'Cream'],
+['leftBackFoot','grey','M297 487 Q243 491 204 538 Q176 582 221 596 Q289 616 368 579 L372 520 Z',275,562,'Grey'],
+['rightBackFoot','grey','M592 488 Q650 493 694 540 Q721 583 676 598 Q608 614 529 580 L526 519 Z',621,563,'Grey'],
+['body','grey','M355 376 Q289 388 280 489 Q272 557 349 574 L553 574 Q633 552 620 479 Q611 388 545 375 Z',451,477,'Grey'],
+['belly','cream','M400 406 Q450 381 500 406 Q541 450 520 562 L382 562 Q363 448 400 406 Z',450,483,'Cream'],
+['leftPaw','grey','M389 519 Q361 514 348 548 L343 588 Q350 612 397 607 Q414 600 414 576 L412 545 Q409 526 389 519 Z',378,562,'Grey'],
+['rightPaw','grey','M512 519 Q540 514 553 548 L558 588 Q551 612 504 607 Q487 600 487 576 L489 545 Q492 526 512 519 Z',524,562,'Grey'],
+['leftEar','grey','M357 246 Q294 159 308 65 Q323 3 362 34 Q423 79 431 251 Z',359,141,'Grey'],
+['rightEar','grey','M471 251 Q479 79 540 34 Q579 3 594 65 Q608 159 545 246 Z',544,141,'Grey'],
+['leftInnerEar','pink','M374 233 Q333 149 340 78 Q346 48 363 74 Q404 127 408 243 Z',375,159,'Pink'],
+['rightInnerEar','pink','M494 243 Q498 127 539 74 Q556 48 562 78 Q569 149 528 233 Z',527,159,'Pink'],
+['head','grey','M451 219 Q337 217 291 302 Q265 360 301 419 Q347 474 451 477 Q555 474 601 419 Q637 360 611 302 Q565 217 451 219 Z',451,300,'Grey'],
+['leftCheek','cream','M308 378 Q346 344 411 377 Q441 396 430 432 Q394 466 348 445 Q316 430 308 378 Z',371,411,'Cream'],
+['rightCheek','cream','M594 378 Q556 344 491 377 Q461 396 472 432 Q508 466 554 445 Q586 430 594 378 Z',531,411,'Cream'],
+['leftEye','black','M378 350 m-14 0 a14 20 0 1 0 28 0 a14 20 0 1 0 -28 0',378,350,'Black'],
+['rightEye','black','M524 350 m-14 0 a14 20 0 1 0 28 0 a14 20 0 1 0 -28 0',524,350,'Black'],
+['nose','pink','M434 399 Q451 385 468 399 L451 416 Z',451,403,'Pink']
+],details:'<path class="detail" d="M451 416 V431 Q435 451 421 432 M451 431 Q467 451 481 432 M330 405 L271 391 M330 419 L270 420 M572 405 L631 391 M572 419 L632 420 M364 586 l-6 15 M387 588 l0 15 M515 588 l0 15 M537 586 l6 15"/>'},
+'Owl':{cat:'Birds',emoji:'🦉',colors:['brown','cream','orange','black'],hint:'Brown wings and feathers, cream face and belly, orange beak and feet.',parts:[
+['leftFoot','orange','M369 527 Q346 561 369 575 L423 575 L418 530 Z',393,554,'Orange'],
+['rightFoot','orange','M481 528 L531 526 Q554 560 532 577 L476 576 Z',510,553,'Orange'],
+['body','brown','M450 178 Q575 174 603 306 Q629 442 551 546 L353 546 Q270 441 298 307 Q323 175 450 178 Z',451,333,'Brown'],
+['leftWing','brown','M316 312 Q253 344 274 465 Q301 498 352 475 Z',310,405,'Brown'],
+['rightWing','brown','M577 314 Q646 353 624 462 Q598 494 549 471 Z',595,403,'Brown'],
+['belly','cream','M448 312 Q538 310 557 399 Q568 486 517 531 L386 531 Q332 474 347 397 Q363 312 448 312 Z',450,430,'Cream'],
+['leftEarTuft','brown','M332 227 L305 129 L388 191 Z',345,184,'Brown'],
+['rightEarTuft','brown','M515 192 L597 128 L567 230 Z',555,183,'Brown'],
+['head','brown','M335 197 Q447 140 558 195 Q609 251 579 331 Q541 381 452 385 Q364 381 324 329 Q297 255 335 197 Z',450,245,'Brown'],
+['leftFace','cream','M337 255 Q364 212 420 237 Q454 266 432 319 Q387 354 345 316 Z',388,286,'Cream'],
+['rightFace','cream','M472 239 Q534 209 563 254 Q578 316 531 341 Q482 350 463 307 Z',518,287,'Cream'],
+['leftEye','black','M378 277 A15 15 0 1 0 408 277 A15 15 0 1 0 378 277',393,277,'Black'],
+['rightEye','black','M494 277 A15 15 0 1 0 524 277 A15 15 0 1 0 494 277',509,277,'Black'],
+['beak','orange','M436 307 L465 307 L451 340 Z',451,319,'Orange']
+],details:'<path class="detail" d="M371 436 Q407 455 446 441 M457 446 Q494 458 530 435 M375 555 v19 m20 -19 v19 M497 555 v19 m21 -19 v19"/>'}
+});
+
+
+// V9 new colouring pages: original, simplified, closed SVG regions.
+const v9pages={
+'Sunflower':{cat:'Plants & Flowers',emoji:'🌻',colors:['yellow','brown','gold'],hint:'Golden yellow petals, brown centre and golden stem (one simplified palette).',parts:[
+['stem','gold','M433 340 L468 340 L476 590 L428 590 Z',452,503,'Golden yellow'],
+['leafLeft','gold','M435 489 Q307 415 275 494 Q326 554 445 532 Z',353,497,'Golden yellow'],
+['leafRight','gold','M463 470 Q580 400 634 474 Q585 543 465 523 Z',549,487,'Golden yellow'],
+...Array.from({length:10},(_,i)=>{let a=i*Math.PI/5;let x=450+143*Math.cos(a),y=280+143*Math.sin(a);return ['petal'+i,'yellow',`M ${450+53*Math.cos(a-.3)} ${280+53*Math.sin(a-.3)} Q ${x+65*Math.cos(a-.25)} ${y+65*Math.sin(a-.25)} ${x} ${y} Q ${x+65*Math.cos(a+.25)} ${y+65*Math.sin(a+.25)} ${450+53*Math.cos(a+.3)} ${280+53*Math.sin(a+.3)} Z`,x,y,'Yellow']}),
+['centre','brown','M450 280 m-68 0 a68 68 0 1 0 136 0 a68 68 0 1 0 -136 0',450,280,'Brown']
+]},
+'Rose':{cat:'Plants & Flowers',emoji:'🌹',colors:['red','gold'],hint:'Red petals and golden-yellow stems and leaves in this simplified activity.',parts:[
+['stem','gold','M435 340 L465 340 L472 593 L430 593 Z',451,500,'Golden yellow'],
+['leafL','gold','M437 471 Q310 410 290 482 Q352 533 440 515 Z',356,475,'Golden yellow'],
+['leafR','gold','M464 505 Q563 413 638 477 Q580 541 464 535 Z',552,485,'Golden yellow'],
+['outerPetal','red','M345 327 Q277 210 368 152 Q438 105 482 158 Q576 123 613 225 Q635 333 522 375 L405 379 Z',452,280,'Red'],
+['leftPetal','red','M358 272 Q329 177 427 187 Q465 209 452 292 Z',400,245,'Red'],
+['rightPetal','red','M462 280 Q481 171 563 195 Q590 257 507 326 Z',521,248,'Red'],
+['centre','red','M404 301 Q423 243 478 252 Q529 262 521 328 Q475 361 423 336 Z',469,308,'Red']
+]},
+'Apple':{cat:'Fruits',emoji:'🍎',colors:['red','brown','gold'],hint:'Red apple, brown stem and golden leaf.',parts:[
+['stem','brown','M442 222 Q448 177 473 157 L489 165 Q469 202 472 233 Z',465,195,'Brown'],
+['leaf','gold','M468 192 Q524 132 583 172 Q555 229 475 212 Z',525,184,'Golden yellow'],
+['fruit','red','M448 239 Q340 175 280 275 Q223 397 312 507 Q382 589 456 554 Q537 592 613 504 Q694 389 628 277 Q567 177 448 239 Z',453,388,'Red']
+]},
+'Carrot':{cat:'Fruits',emoji:'🥕',colors:['orange','gold'],hint:'Orange root and golden leaves in this simple palette.',parts:[
+['leaf1','gold','M446 252 Q355 148 405 101 Q467 158 468 260 Z',426,181,'Golden yellow'],
+['leaf2','gold','M453 257 Q472 108 525 106 Q541 186 477 262 Z',496,179,'Golden yellow'],
+['leaf3','gold','M460 264 Q547 163 589 197 Q558 260 471 281 Z',526,227,'Golden yellow'],
+['root','orange','M367 258 Q458 218 558 261 Q549 394 463 593 Q380 402 367 258 Z',462,362,'Orange']
+]},
+'Butterfly':{cat:'Insects',emoji:'🦋',colors:['orange','black','yellow'],hint:'Orange and yellow wings with black body and markings.',parts:[
+['leftUpper','orange','M438 309 Q306 100 213 170 Q164 292 412 371 Z',321,254,'Orange'],
+['rightUpper','orange','M465 310 Q598 102 688 171 Q741 298 488 371 Z',584,252,'Orange'],
+['leftLower','yellow','M419 374 Q199 332 254 491 Q337 590 441 419 Z',332,445,'Yellow'],
+['rightLower','yellow','M481 374 Q704 332 651 491 Q569 590 460 419 Z',568,444,'Yellow'],
+['body','black','M447 282 Q465 264 478 290 L478 484 Q463 519 446 483 Z',462,391,'Black']
+],details:'<path class="detail" d="M453 289 Q398 217 403 181 M470 288 Q521 213 518 182 M298 287 Q337 306 402 337 M603 289 Q562 312 501 336"/>'},
+'Ladybug':{cat:'Insects',emoji:'🐞',colors:['red','black'],hint:'Red wing cases and black head, legs and spots.',parts:[
+['leftWing','red','M450 271 Q266 233 257 414 Q264 545 443 548 Z',351,398,'Red'],
+['rightWing','red','M450 271 Q634 233 643 414 Q636 545 457 548 Z',548,399,'Red'],
+['head','black','M383 275 Q376 189 450 177 Q526 188 517 275 Z',451,230,'Black'],
+['spot1','black','M338 344 a23 23 0 1 0 46 0 a23 23 0 1 0 -46 0',361,345,'Black'],
+['spot2','black','M306 447 a21 21 0 1 0 42 0 a21 21 0 1 0 -42 0',327,447,'Black'],
+['spot3','black','M525 346 a23 23 0 1 0 46 0 a23 23 0 1 0 -46 0',548,346,'Black'],
+['spot4','black','M550 451 a21 21 0 1 0 42 0 a21 21 0 1 0 -42 0',571,451,'Black']
+],details:'<path class="detail" d="M300 335 L220 300 M281 406 L201 402 M308 494 L225 533 M601 335 L680 300 M620 406 L700 402 M593 494 L675 533 M420 189 L400 145 M482 189 L505 145"/>'},
+'Dolphin':{cat:'Sea Animals',emoji:'🐬',colors:['grey','cream','black'],hint:'Grey dolphin with a cream underside and dark eye.',parts:[
+['tailUpper','grey','M667 344 Q734 251 809 270 L756 362 Z',745,304,'Grey'],
+['tailLower','grey','M674 351 Q743 430 817 427 L749 355 Z',746,401,'Grey'],
+['body','grey','M190 349 Q298 234 492 259 Q620 266 712 344 Q615 432 448 420 Q276 416 190 349 Z',453,331,'Grey'],
+['fin','grey','M414 264 Q436 179 510 168 Q487 226 496 276 Z',461,230,'Grey'],
+['flipper','grey','M469 374 Q522 453 610 467 Q583 403 532 367 Z',541,416,'Grey'],
+['belly','cream','M216 355 Q400 397 675 344 Q594 439 441 422 Q305 413 216 355 Z',441,399,'Cream'],
+['eye','black','M291 322 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0',301,322,'Black']
+]},
+'Whale':{cat:'Sea Animals',emoji:'🐳',colors:['blue','cream','black'],hint:'Blue whale, pale belly and black eye.',parts:[
+['tailTop','blue','M693 333 Q760 247 830 272 L759 368 Z',764,305,'Blue'],
+['tailBottom','blue','M694 340 Q769 427 830 419 L759 361 Z',762,393,'Blue'],
+['body','blue','M168 359 Q185 225 398 222 Q613 223 740 345 Q633 472 399 472 Q196 475 168 359 Z',444,312,'Blue'],
+['belly','cream','M184 381 Q386 440 716 354 Q650 478 404 477 Q238 477 184 381 Z',439,432,'Cream'],
+['eye','black','M264 335 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0',275,335,'Black']
+]},
+'Rocket':{cat:'Space',emoji:'🚀',colors:['white','red','blue','orange'],hint:'White rocket, red fins, blue window and orange flame.',parts:[
+['flame','orange','M421 504 L477 504 Q496 569 449 627 Q402 569 421 504 Z',449,565,'Orange'],
+['leftFin','red','M415 425 Q340 443 345 550 L431 507 Z',388,487,'Red'],
+['rightFin','red','M482 425 Q560 443 555 550 L470 507 Z',516,486,'Red'],
+['body','white','M404 241 Q416 157 450 121 Q489 158 495 241 L484 518 L415 518 Z',451,377,'White'],
+['nose','red','M404 244 Q415 159 450 121 Q485 159 495 244 Z',449,207,'Red'],
+['window','blue','M415 310 a35 35 0 1 0 70 0 a35 35 0 1 0 -70 0',450,310,'Blue']
+]},
+'Planet':{cat:'Space',emoji:'🪐',colors:['orange','gold','blue'],hint:'Orange planet, golden ring and blue decorative band.',parts:[
+['ringBack','gold','M161 382 Q220 265 455 254 Q706 244 762 369 Q679 291 454 310 Q235 326 161 382 Z',458,281,'Golden yellow'],
+['planet','orange','M450 353 m-155 0 a155 155 0 1 0 310 0 a155 155 0 1 0 -310 0',450,351,'Orange'],
+['band','blue','M317 310 Q452 360 585 307 L596 358 Q454 418 305 361 Z',449,359,'Blue'],
+['ringFront','gold','M160 384 Q257 462 452 452 Q658 442 764 366 Q721 496 453 509 Q215 502 160 384 Z',455,478,'Golden yellow']
+]},
+'House':{cat:'Buildings',emoji:'🏠',colors:['red','cream','brown','blue'],hint:'Red roof, cream walls, brown door and blue windows.',parts:[
+['walls','cream','M273 303 L626 303 L626 561 L273 561 Z',452,453,'Cream'],
+['roof','red','M226 313 L450 145 L676 313 Z',451,259,'Red'],
+['door','brown','M412 420 L492 420 L492 561 L412 561 Z',451,494,'Brown'],
+['windowLeft','blue','M307 364 L380 364 L380 432 L307 432 Z',343,403,'Blue'],
+['windowRight','blue','M522 364 L595 364 L595 432 L522 432 Z',559,403,'Blue']
+]},
+'Tractor':{cat:'Vehicles',emoji:'🚜',colors:['red','black','blue','grey'],hint:'Red tractor, black tyres, blue window and grey exhaust.',parts:[
+['body','red','M265 352 L654 352 Q697 368 687 469 L259 469 Z',476,403,'Red'],
+['cabin','red','M394 227 L553 227 L588 360 L374 360 Z',485,294,'Red'],
+['window','blue','M422 252 L534 252 L553 338 L410 338 Z',480,295,'Blue'],
+['exhaust','grey','M624 284 L648 284 L648 351 L624 351 Z',636,317,'Grey'],
+['wheelBack','black','M274 454 m-61 0 a61 61 0 1 0 122 0 a61 61 0 1 0 -122 0',274,454,'Black'],
+['wheelFront','black','M594 462 m-91 0 a91 91 0 1 0 182 0 a91 91 0 1 0 -182 0',594,462,'Black'],
+['hubBack','grey','M274 454 m-25 0 a25 25 0 1 0 50 0 a25 25 0 1 0 -50 0',274,454,'Grey'],
+['hubFront','grey','M594 462 m-37 0 a37 37 0 1 0 74 0 a37 37 0 1 0 -74 0',594,462,'Grey']
+]}
+};
+Object.assign(specs,v9pages);
+
+// V10 anatomical repairs: separate four legs and visible toes/hooves.
+specs.Elephant.parts.unshift(
+ ['farBackLeg','grey','M553 369 L601 377 L611 553 L555 553 Z',581,476,'Grey'],
+ ['farFrontLeg','grey','M384 375 L430 381 L431 555 L383 555 Z',406,478,'Grey'],
+ ['farBackToenails','cream','M552 545 L613 545 L614 567 L550 567 Z',583,557,'Cream'],
+ ['farFrontToenails','cream','M381 546 L434 546 L435 568 L379 568 Z',408,557,'Cream']
+);
+specs.Elephant.parts.push(
+ ['nearFrontToes','cream','M409 546 L477 546 L478 571 L409 571 Z',443,557,'Cream'],
+ ['nearBackToes','cream','M573 543 L641 543 L642 570 L573 570 Z',607,555,'Cream']
+);
+specs.Giraffe.parts.unshift(
+ ['farHindLeg','gold','M604 392 L639 395 L661 549 L625 553 Z',639,477,'Golden yellow'],
+ ['farFrontLeg','gold','M447 399 L480 403 L491 549 L455 553 Z',472,482,'Golden yellow'],
+ ['farHindHoof','dark','M623 545 L663 545 L666 572 L620 572 Z',644,560,'Dark brown'],
+ ['farFrontHoof','dark','M452 544 L494 544 L495 574 L450 574 Z',472,560,'Dark brown']
+);
+specs.Giraffe.parts.push(['nearHindHoof','dark','M598 545 L653 545 L654 577 L598 577 Z',626,563,'Dark brown']);
+
+// V10.1 elephant ear repair: two clearly outlined ears, with a prominent near ear.
+// Layer the near ear above the head but below tusk and eye so it cannot disappear.
+const elephant=specs.Elephant;
+const headIndex=elephant.parts.findIndex(p=>p[0]==='head');
+elephant.parts.splice(headIndex+1,0,
+ ['nearEar','grey','M367 236 Q422 172 493 210 Q543 263 510 346 Q478 406 403 382 Q364 345 367 236 Z',458,291,'Grey'],
+ ['innerEar','cream','M411 249 Q448 220 479 245 Q509 277 479 337 Q453 356 421 337 Q403 302 411 249 Z',450,292,'Cream']
+);
+elephant.hint='Elephant ears: large grey outer ears with a pale inner ear. Colour the trunk and body grey, tusks cream, and eye black.';
+elephant.details=(elephant.details||'')+'<path class="detail" d="M403 382 Q364 345 367 236 Q422 172 493 210 Q543 263 510 346 Q478 406 403 382"/>';
+
+
+// V10.3: rebuild these silhouettes rather than piling patches on top of patches.
+// Both ears are visible, and each is independently colourable.
+const el=specs.Elephant;
+el.parts=el.parts.filter(p=>!['ear','nearEar','innerEar'].includes(p[0]));
+const elHead=el.parts.findIndex(p=>p[0]==='head');
+el.parts.splice(elHead,0,
+ ['leftEar','grey','M294 242 Q231 175 171 222 Q128 284 177 350 Q223 385 288 328 Z',222,283,'Grey'],
+ ['leftInnerEar','cream','M270 249 Q221 213 196 250 Q169 299 204 333 Q242 349 271 308 Z',221,290,'Cream'],
+ ['rightEar','grey','M371 239 Q423 167 489 215 Q542 267 492 350 Q440 389 389 322 Z',445,277,'Grey'],
+ ['rightInnerEar','cream','M398 251 Q435 212 474 244 Q505 277 473 328 Q435 351 405 308 Z',446,286,'Cream']
+);
+el.details=(el.details||'').replace(/<path class="detail" d="M403 382 Q364 345 367 236 Q422 172 493 210 Q543 263 510 346 Q478 406 403 382"\/>/,'');
+el.hint='Two complete ears (grey outer ears, cream inner ears), four legs, trunk, tusk and eye. Tap each labelled part to colour it.';
+// Rabbit: expose both hind legs and two front legs instead of covering a leg with the body.
+const rabbit=specs.Rabbit;
+rabbit.parts=rabbit.parts.filter(p=>!['rearFarFoot','rearNearFoot'].includes(p[0]));
+const rb=rabbit.parts.findIndex(p=>p[0]==='body');
+rabbit.parts.splice(rb,0,['farHindLeg','grey','M567 384 Q626 377 646 440 L657 520 L611 548 L567 481 Z',610,449,'Grey']);
+const tail=rabbit.parts.findIndex(p=>p[0]==='tail');
+rabbit.parts.splice(tail,0,
+ ['nearHindLeg','grey','M558 389 Q647 367 668 454 Q686 504 643 546 L569 539 Q604 493 571 453 Z',623,454,'Grey'],
+ ['farHindFoot','cream','M610 525 Q652 510 691 535 Q710 560 679 575 L609 575 Z',653,556,'Cream'],
+ ['nearHindFoot','cream','M559 533 Q615 510 659 541 Q682 569 644 584 L554 579 Z',609,557,'Cream']
+);
+rabbit.hint='Complete rabbit: two long ears, two front legs, two hind legs, fluffy tail and pink nose.';
+// Butterfly: mirror wing outlines around x=450 for symmetrical, ordered pairs.
+const butterfly=specs.Butterfly;
+butterfly.parts=[
+ ['upperLeft','orange','M443 323 Q356 142 247 177 Q174 221 236 332 Q318 388 442 365 Z',332,275,'Orange'],
+ ['upperRight','orange','M457 323 Q544 142 653 177 Q726 221 664 332 Q582 388 458 365 Z',568,275,'Orange'],
+ ['lowerLeft','yellow','M442 371 Q325 354 252 384 Q218 474 311 520 Q385 542 445 418 Z',336,435,'Yellow'],
+ ['lowerRight','yellow','M458 371 Q575 354 648 384 Q682 474 589 520 Q515 542 455 418 Z',564,435,'Yellow'],
+ ['body','black','M438 298 Q450 282 462 298 L462 473 Q450 495 438 473 Z',450,390,'Black']
+];
+butterfly.details='<path class="detail" d="M443 303 Q399 225 412 187 M457 303 Q501 225 488 187 M440 395 Q347 409 304 466 M460 395 Q553 409 596 466 M445 298 Q410 254 416 222 M455 298 Q490 254 484 222"/>';
+butterfly.hint='Symmetrical butterfly: matching upper orange wings and lower yellow wings, with a black body.';
+
+
+// V10.7: entirely redrawn, ordered silhouettes. All parts are closed, colourable regions.
+specs.Rabbit={cat:'Animals',emoji:'🐰',colors:['grey','cream','pink','black'],hint:'Colour the rabbit’s two upright ears, face, fluffy body, four paws and tail.',parts:[
+ ['tail','cream','M556 426 Q577 402 595 418 Q614 404 622 426 Q646 428 639 449 Q657 469 636 483 Q634 509 610 502 Q586 516 570 491 L550 469 Z',625,462,'Cream'],
+ ['backLeftFoot','grey','M312 481 C258 492 241 544 282 564 Q337 584 393 550 L403 499 Z',320,539,'Grey'],
+ ['backRightFoot','grey','M515 498 L555 481 Q623 479 649 537 Q655 574 604 573 L506 550 Z',582,542,'Grey'],
+ ['body','grey','M444 320 C340 319 288 402 321 493 Q337 544 450 553 Q564 547 578 492 C610 406 545 322 444 320 Z',450,429,'Grey'],
+ ['belly','cream','M450 389 C395 390 368 444 389 501 Q411 529 450 532 Q491 527 511 498 C530 442 501 390 450 389 Z',450,469,'Cream'],
+ ['frontLeftLeg','grey','M395 482 Q412 465 437 480 L441 556 Q427 584 390 572 Q371 554 395 482 Z',413,528,'Grey'],
+ ['frontRightLeg','grey','M463 480 Q489 464 508 483 Q530 557 508 572 Q473 586 458 556 Z',484,528,'Grey'],
+ ['leftEar','grey','M367 245 C330 164 315 78 350 65 C389 52 417 147 427 240 Z',373,148,'Grey'],
+ ['rightEar','grey','M467 238 C474 140 501 49 538 66 C573 86 539 180 519 253 Z',506,151,'Grey'],
+ ['leftInnerEar','pink','M373 212 C346 142 341 91 357 90 Q383 101 402 218 Z',374,163,'Pink'],
+ ['rightInnerEar','pink','M488 216 Q508 103 532 91 Q548 116 509 224 Z',511,164,'Pink'],
+ ['head','grey','M449 210 C367 204 324 261 337 331 Q342 395 449 411 Q553 396 563 330 C577 262 529 205 449 210 Z',450,278,'Grey'],
+ ['leftCheek','cream','M355 337 Q381 310 439 345 Q440 392 398 391 Q362 386 355 337 Z',396,360,'Cream'],
+ ['rightCheek','cream','M544 337 Q519 310 460 345 Q459 392 501 391 Q538 386 544 337 Z',504,360,'Cream'],
+ ['leftEye','black','M402 306 a10 14 0 1 0 20 0 a10 14 0 1 0 -20 0',412,307,'Black'],
+ ['rightEye','black','M480 306 a10 14 0 1 0 20 0 a10 14 0 1 0 -20 0',490,307,'Black'],
+ ['nose','pink','M435 346 Q450 337 465 346 L450 361 Z',450,349,'Pink']
+],details:'<path class="detail" d="M450 361 Q443 376 430 374 M450 361 Q457 376 470 374 M376 352 L325 342 M377 363 L324 364 M524 352 L575 342 M523 363 L576 364 M312 555 Q326 548 336 557 M573 557 Q586 547 601 558"/>'};
+specs.Butterfly={cat:'Insects',emoji:'🦋',colors:['orange','yellow','black','cream'],hint:'The butterfly has two matching upper wings and two matching lower wings.',parts:[
+ ['upperLeft','orange','M440 338 C380 203 276 148 215 208 C164 267 210 350 300 379 Q368 395 439 372 Z',315,293,'Orange'],
+ ['upperRight','orange','M460 338 C520 203 624 148 685 208 C736 267 690 350 600 379 Q532 395 461 372 Z',585,293,'Orange'],
+ ['lowerLeft','yellow','M439 379 C348 359 260 376 255 452 C252 517 323 550 372 516 Q424 477 441 406 Z',343,449,'Yellow'],
+ ['lowerRight','yellow','M461 379 C552 359 640 376 645 452 C648 517 577 550 528 516 Q476 477 459 406 Z',557,449,'Yellow'],
+ ['leftUpperSpot','cream','M311 260 C334 246 358 268 363 298 Q337 321 310 294 Q296 274 311 260 Z',334,282,'Cream'],
+ ['rightUpperSpot','cream','M589 260 C566 246 542 268 537 298 Q563 321 590 294 Q604 274 589 260 Z',566,282,'Cream'],
+ ['leftLowerSpot','cream','M316 436 Q341 411 365 441 Q357 474 331 471 Q306 464 316 436 Z',338,446,'Cream'],
+ ['rightLowerSpot','cream','M584 436 Q559 411 535 441 Q543 474 569 471 Q594 464 584 436 Z',562,446,'Cream'],
+ ['body','black','M449 311 Q435 319 438 355 L441 462 Q450 492 459 462 L462 355 Q465 319 451 311 Z',450,393,'Black'],
+ ['head','black','M450 309 m-18 0 a18 18 0 1 0 36 0 a18 18 0 1 0 -36 0',450,309,'Black']
+],details:'<path class="detail" d="M441 300 Q408 262 411 228 M459 300 Q492 262 489 228 M438 359 Q358 335 287 307 M462 359 Q542 335 613 307 M437 398 Q369 401 321 488 M463 398 Q531 401 579 488"/>'};
+
+// Persistent progress is stored on the child's own device, without accounts or tracking.
+const V10_STORAGE='StudyAuraXKidsV10_1Progress';
+let v10saved={};
+try{v10saved=JSON.parse(localStorage.getItem(V10_STORAGE)||'{}')||{}}catch(e){v10saved={}}
+function v10Store(){try{localStorage.setItem(V10_STORAGE,JSON.stringify(v10saved))}catch(e){}}
+function v10SavePage(){
+ if(!art || !art.querySelector('.region'))return;
+ v10saved[current]={fills:[...art.querySelectorAll('.region')].map(e=>e.getAttribute('fill')),strokes:strokes.slice(0,500)};
+ v10Store();
+}
+function v10RestorePage(){
+ const saved=v10saved[current];if(!saved)return;
+ const regs=[...art.querySelectorAll('.region')];
+ if(Array.isArray(saved.fills)&&saved.fills.length===regs.length){
+  regs.forEach((e,i)=>{const allowed=palettes[e.dataset.correct][1];e.setAttribute('fill',saved.fills[i]===allowed?allowed:'white')});
+ }
+ strokes=Array.isArray(saved.strokes)?saved.strokes.slice(0,500):[];
+}
+
+// V10.7: completely rebuilt, front-facing baby elephant.
+// Symmetrical ears and connected trunk, rounded feet, and four distinct legs.
+specs.Elephant={cat:'Animals',emoji:'🐘',colors:['grey','pink','cream','black'],hint:'A friendly elephant seen from the front. Colour both ears, the head, four legs, curved trunk and little tusks.',parts:[
+ ['backLeftLeg','grey','M338 422 Q317 468 317 528 Q308 562 339 571 Q370 580 389 553 L397 454 Z',352,512,'Grey'],
+ ['backRightLeg','grey','M506 454 L514 553 Q534 580 563 571 Q592 562 583 528 Q583 468 562 422 Z',547,512,'Grey'],
+ ['body','grey','M335 280 Q381 238 450 249 Q519 238 565 280 Q619 346 593 462 Q579 507 525 510 L375 510 Q321 507 307 462 Q281 346 335 280 Z',450,414,'Grey'],
+ ['leftEar','grey','M346 234 Q287 159 227 180 Q162 209 183 314 Q200 392 284 395 Q331 389 357 333 Z',251,298,'Grey'],
+ ['leftInner','pink','M322 251 Q280 204 236 222 Q197 244 219 307 Q239 356 283 350 Q318 335 322 251 Z',266,289,'Pink'],
+ ['rightEar','grey','M554 234 Q613 159 673 180 Q738 209 717 314 Q700 392 616 395 Q569 389 543 333 Z',649,298,'Grey'],
+ ['rightInner','pink','M578 251 Q620 204 664 222 Q703 244 681 307 Q661 356 617 350 Q582 335 578 251 Z',634,289,'Pink'],
+ ['head','grey','M450 170 Q357 163 328 236 Q304 299 332 357 Q356 400 410 411 L490 411 Q544 400 568 357 Q596 299 572 236 Q543 163 450 170 Z',450,262,'Grey'],
+ ['frontLeftLeg','grey','M362 444 Q384 433 410 452 L415 539 Q427 576 391 584 Q349 592 340 558 Q338 539 347 509 Z',376,516,'Grey'],
+ ['frontRightLeg','grey','M490 452 Q516 433 538 444 L553 509 Q562 539 560 558 Q551 592 509 584 Q473 576 485 539 Z',524,516,'Grey'],
+ ['leftTusk','cream','M395 379 Q371 400 385 432 Q397 415 413 405 Z',396,404,'Cream'],
+ ['rightTusk','cream','M505 379 Q529 400 515 432 Q503 415 487 405 Z',504,404,'Cream'],
+ ['trunk','grey','M425 352 Q437 345 450 347 Q463 345 475 352 Q476 397 474 436 Q474 465 487 471 Q501 476 512 461 Q520 452 531 461 Q541 472 530 491 Q509 520 479 509 Q438 496 436 454 Q433 408 425 352 Z',456,436,'Grey'],
+ ['leftEye','black','M387 304 a9 11 0 1 0 18 0 a9 11 0 1 0 -18 0',396,304,'Black'],
+ ['rightEye','black','M495 304 a9 11 0 1 0 18 0 a9 11 0 1 0 -18 0',504,304,'Black']
+],details:'<g class="detail" fill="none"><path d="M374 280 Q395 265 414 280 M486 280 Q505 265 526 280 M446 394 Q456 402 466 394 M447 428 Q456 435 466 428 M447 460 Q457 468 472 463 M355 558 Q366 549 366 570 M383 573 Q390 556 394 574 M506 574 Q510 556 517 573 M534 570 Q534 549 545 558"/></g>'};
+
+
+// V11.7 rebuilt illustrations; intentionally do not modify previously approved pages.
+specs.Giraffe={
+ cat:'Animals',emoji:'🦒',colors:['gold','brown','dark','black','cream'],
+ hint:'Colour the golden coat, brown spots, dark hooves and tail tuft.',
+ parts:[
+ ['tail','gold','M668 345 Q731 379 707 466 L693 469 Q707 401 658 381 Z',706,416,'Golden yellow'],
+ ['tailTuft','dark','M690 454 Q717 447 725 483 Q715 518 692 500 L682 474 Z',704,483,'Dark brown'],
+ ['backLegFar','gold','M578 407 L618 411 L637 554 L597 554 Z',610,490,'Golden yellow'],
+ ['frontLegFar','gold','M438 412 L475 412 L471 551 L433 551 Z',454,493,'Golden yellow'],
+ ['body','gold','M354 312 Q472 271 618 311 Q674 324 680 374 Q675 431 621 447 L414 444 Q357 437 348 395 Z',514,352,'Golden yellow'],
+ ['backLegNear','gold','M620 411 Q652 416 657 446 L659 555 L615 555 L606 451 Z',633,501,'Golden yellow'],
+ ['frontLegNear','gold','M385 409 L428 421 L428 555 L382 555 Z',404,495,'Golden yellow'],
+ ['neck','gold','M309 168 Q332 150 358 165 L401 330 Q411 357 389 405 L348 406 L299 230 Z',349,272,'Golden yellow'],
+ ['mane','brown','M354 177 Q371 206 377 241 L412 338 L392 353 L347 212 Z',381,277,'Brown'],
+ ['earBack','gold','M320 142 Q273 101 260 140 Q276 176 317 171 Z',285,151,'Golden yellow'],
+ ['earFront','gold','M362 142 Q406 99 418 143 Q404 176 362 171 Z',390,150,'Golden yellow'],
+ ['hornLeft','brown','M320 139 L313 87 L331 83 L342 141 Z',326,111,'Brown'],
+ ['hornRight','brown','M357 139 L365 88 L383 92 L376 148 Z',372,117,'Brown'],
+ ['head','gold','M293 150 Q318 125 365 139 Q402 149 402 191 L385 223 L326 229 Q288 207 293 150 Z',345,182,'Golden yellow'],
+ ['muzzle','cream','M321 201 Q365 195 397 206 Q419 221 390 242 L342 246 Q313 237 321 201 Z',364,227,'Cream'],
+ ['spotBody1','brown','M428 337 L467 324 L488 352 L460 383 L425 365 Z',455,351,'Brown'],
+ ['spotBody2','brown','M524 319 L567 328 L561 369 L523 365 Z',545,343,'Brown'],
+ ['spotBody3','brown','M583 380 L623 370 L637 405 L598 417 Z',610,393,'Brown'],
+ ['spotNeck1','brown','M321 245 L356 237 L366 275 L335 290 Z',345,264,'Brown'],
+ ['spotNeck2','brown','M343 309 L379 296 L390 332 L357 349 Z',366,325,'Brown'],
+ ['hoofBackFar','dark','M592 547 L642 547 L642 577 L592 577 Z',616,560,'Dark brown'],
+ ['hoofFrontFar','dark','M427 546 L477 546 L477 577 L427 577 Z',451,561,'Dark brown'],
+ ['hoofBackNear','dark','M610 548 L665 548 L665 580 L610 580 Z',637,563,'Dark brown'],
+ ['hoofFrontNear','dark','M377 548 L434 548 L434 580 L377 580 Z',405,564,'Dark brown'],
+ ['eye','black','M323 178 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0',329,178,'Black']
+ ],details:'<path class="detail" d="M382 224 Q395 230 402 221 M350 228 l0 5"/>'
+};
+specs.Flamingo={
+ cat:'Birds',emoji:'🦩',colors:['pink','black','cream'],
+ hint:'Pink body, wings, neck and legs; cream beak with black tip.',
+ parts:[
+ ['backLeg','pink','M472 428 L488 431 L506 549 L493 554 Z',491,503,'Pink'],
+ ['backFoot','pink','M492 547 L512 547 L554 567 L545 576 L489 571 Z',517,566,'Pink'],
+ ['frontLeg','pink','M414 431 L432 431 L426 556 L411 556 Z',420,506,'Pink'],
+ ['frontFoot','pink','M411 551 L428 551 L464 569 L452 579 L391 579 L389 567 Z',424,566,'Pink'],
+ ['body','pink','M310 351 Q341 282 441 291 Q521 294 554 354 Q565 413 509 450 Q441 477 365 432 Q325 410 310 351 Z',420,369,'Pink'],
+ ['wing','pink','M362 342 Q431 317 511 356 Q490 426 416 430 Q366 405 362 342 Z',438,379,'Pink'],
+ ['neck','pink','M496 332 Q527 294 495 254 Q455 212 458 160 Q461 107 501 99 Q537 95 549 131 L535 161 Q514 123 494 142 Q474 161 508 213 Q574 291 532 359 Z',515,281,'Pink'],
+ ['head','pink','M485 106 Q504 76 537 98 Q560 115 551 149 Q530 176 500 159 Q480 145 485 106 Z',519,126,'Pink'],
+ ['beak','cream','M546 124 Q580 129 608 155 Q599 175 573 181 L539 151 Z',572,153,'Cream'],
+ ['tip','black','M593 144 Q609 155 608 155 Q599 175 573 181 L580 159 Z',591,163,'Black'],
+ ['eye','black','M527 121 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0',532,121,'Black']
+ ],details:'<path class="detail" d="M379 378 Q421 402 477 382"/>'
+};
+specs['Fire engine']={
+ cat:'Vehicles',emoji:'🚒',colors:['red','black','grey','blue','white','yellow'],
+ hint:'Red fire engine, blue windows, grey ladder and black tyres.',
+ parts:[
+ ['truckBody','red','M148 310 L481 310 L481 264 L632 264 Q666 266 688 300 L728 352 L728 463 L148 463 Z',349,391,'Red'],
+ ['frontDoor','red','M505 355 L665 355 L684 455 L505 455 Z',581,414,'Red'],
+ ['cabWindow','blue','M511 284 L618 284 Q638 288 650 308 L675 346 L511 346 Z',585,317,'Blue'],
+ ['rearPanel','red','M178 332 L457 332 L457 441 L178 441 Z',318,410,'Red'],
+ ['stripe','yellow','M178 370 L474 370 L474 389 L178 389 Z',326,379,'Yellow'],
+ ['ladderBase','grey','M203 227 L556 227 L556 253 L203 253 Z',381,240,'Grey'],
+ ['ladderTop','grey','M203 202 L556 202 L556 216 L203 216 Z',381,210,'Grey'],
+ ['ladderRung1','grey','M243 215 L254 215 L254 228 L243 228 Z',248,223,'Grey'],
+ ['ladderRung2','grey','M303 215 L314 215 L314 228 L303 228 Z',309,223,'Grey'],
+ ['ladderRung3','grey','M363 215 L374 215 L374 228 L363 228 Z',369,223,'Grey'],
+ ['ladderRung4','grey','M423 215 L434 215 L434 228 L423 228 Z',429,223,'Grey'],
+ ['ladderRung5','grey','M483 215 L494 215 L494 228 L483 228 Z',489,223,'Grey'],
+ ['siren','blue','M570 238 L617 238 L626 264 L560 264 Z',593,250,'Blue'],
+ ['bumper','grey','M123 451 L751 451 L751 480 L123 480 Z',439,467,'Grey'],
+ ['headlight','white','M709 381 L727 381 L727 412 L709 412 Z',717,398,'White'],
+ ['rearTyre','black','M284 465 m-63 0 a63 63 0 1 0 126 0 a63 63 0 1 0 -126 0',284,465,'Black'],
+ ['frontTyre','black','M614 465 m-63 0 a63 63 0 1 0 126 0 a63 63 0 1 0 -126 0',614,465,'Black'],
+ ['rearHub','grey','M284 465 m-28 0 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0',284,465,'Grey'],
+ ['frontHub','grey','M614 465 m-28 0 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0',614,465,'Grey']
+ ],details:'<path class="detail" d="M497 353 L497 454 M666 355 L666 450 M188 344 L445 344"/>'
+};
+
+let current='Lion',cat='Animals',color='gold',tool='fill',history=[],future=[],painting=false,activePointer=null,last=null,strokes=[],lastMilestone=0;const art=document.querySelector('#art'),canvas=document.querySelector('#draw'),ctx=canvas.getContext('2d'),wrap=document.querySelector('#canvasWrap');function regionHTML(p,i){let [id,c,d,x,y,label]=p;return `<path class="region" data-index="${i}" data-correct="${c}" fill="white" d="${d}" tabindex="0" aria-label="${id}: ${label}"/>`};function render(){const s=specs[current];document.querySelector('#name').textContent=current;document.querySelector('#hint').textContent=s.hint;document.querySelector('#choices').innerHTML=Object.entries(specs).filter(([k,v])=>v.cat===cat).map(([k,v])=>`<button class="animal ${k===current?'active':''}" data-name="${k}"><span class="emoji">${v.emoji}</span>${k}</button>`).join('');document.querySelectorAll('[data-name]').forEach(b=>b.onclick=()=>{current=b.dataset.name;history=[];future=[];strokes=[];lastMilestone=0;render()});document.querySelectorAll('[data-cat]').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));art.innerHTML=`<rect width="900" height="690" fill="#fff"/><circle cx="730" cy="128" r="49" fill="#fff4c5"/><path d="M0 604 Q190 569 357 600 Q574 565 900 600 L900 690 L0 690 Z" fill="#eff8e8"/><path d="M0 625 Q240 592 500 631 Q710 592 900 620" fill="none" stroke="#c8ddbf" stroke-width="5"/>${s.parts.map(regionHTML).join('')}${s.details||''}${s.parts.map(([id,c,d,x,y,label])=>`<text class="partlabel" x="${x}" y="${y}">${label}</text>`).join('')}`;fitRegionLabels();if(!s.colors.includes(color))color=s.colors[0];const sw=document.querySelector('#swatches');sw.innerHTML=s.colors.map(c=>`<button title="${palettes[c][0]}" aria-label="Select ${palettes[c][0]}" class="swatch ${color===c?'active':''}" data-color="${c}" style="background:${palettes[c][1]}"></button>`).join('');if(!s.colors.includes(color))color=s.colors[0];sw.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{color=b.dataset.color;renderSwatches()});renderSwatches();document.querySelector('#reference').innerHTML=`<div style="font-size:105px" aria-label="${current} reference icon">${s.emoji}</div>`;v10RestorePage();resizeCanvas();redrawStrokes();lastMilestone=100;updateProgress();lastMilestone=[25,50,75,100].filter(x=>Number(document.querySelector("#scoreValue").textContent.replace("%",""))>=x).at(-1)||0;status('Choose a colour and tap a matching labelled area!')};
+function fitRegionLabels(){
+ const paths=[...art.querySelectorAll('.region')],labels=[...art.querySelectorAll('.partlabel')];
+ const occupied=[];
+ labels.forEach((t,i)=>{
+   const p=paths[i];if(!p)return;
+   const b=p.getBBox();const text=t.textContent;
+   const needed=Math.max(43,text.length*8.5);
+   if(b.width<needed+12||b.height<28){t.style.display='none';return;}
+   let x=Number(t.getAttribute('x')),y=Number(t.getAttribute('y'));
+   if(x<b.x+needed/2||x>b.x+b.width-needed/2)x=b.x+b.width/2;
+   if(y<b.y+17||y>b.y+b.height-6)y=b.y+b.height/2;
+   t.setAttribute('x',x);t.setAttribute('y',y);
+   const rect={left:x-needed/2,right:x+needed/2,top:y-18,bottom:y+5};
+   if(occupied.some(o=>!(rect.right<o.left||rect.left>o.right||rect.bottom<o.top||rect.top>o.bottom))){t.style.display='none';return;}
+   occupied.push(rect);
+ });
+}
+
+function renderSwatches(){document.querySelectorAll('[data-color]').forEach(b=>b.classList.toggle('active',b.dataset.color===color));document.querySelector('#selectedName').textContent=`Selected: ${palettes[color][0]}`};function status(t){document.querySelector('#status').textContent=t};function saveState(){history.push({fills:[...art.querySelectorAll('.region')].map(e=>e.getAttribute('fill')),strokes:JSON.parse(JSON.stringify(strokes))});if(history.length>70)history.shift();future=[]};function restore(v){art.querySelectorAll('.region').forEach((e,i)=>e.setAttribute('fill',v.fills[i]));strokes=v.strokes;redrawStrokes();updateProgress();v10SavePage()};function snapshot(){return {fills:[...art.querySelectorAll('.region')].map(e=>e.getAttribute('fill')),strokes:JSON.parse(JSON.stringify(strokes))}};art.addEventListener('click',e=>{if(tool!=='fill'||!e.target.classList.contains('region'))return;const target=e.target,expected=target.dataset.correct;if(color!==expected){status(`Try ${palettes[expected][0]} for this part! 🌟`);return}saveState();target.setAttribute('fill',palettes[color][1]);status(`Great job! ${palettes[color][0]} is correct! ⭐`);updateProgress()});art.addEventListener('keydown',e=>{if(e.target.classList.contains('region')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:true}))}});function celebrate(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const layer=document.querySelector('#sparkles');layer.innerHTML='';for(let i=0;i<18;i++){const sp=document.createElement('span');sp.className='sparkle';sp.textContent=['⭐','✨','🌟','🎉'][i%4];sp.style.left=(12+Math.random()*76)+'%';sp.style.top=(20+Math.random()*50)+'%';sp.style.animationDelay=(Math.random()*.35)+'s';layer.appendChild(sp)}setTimeout(()=>layer.replaceChildren(),2100)}
+function updateProgress(){const regions=[...art.querySelectorAll('.region')];const n=regions.filter(r=>r.getAttribute('fill')===palettes[r.dataset.correct][1]).length;const pct=regions.length?Math.round(100*n/regions.length):0;document.querySelector('#progress').style.width=pct+'%';document.querySelector('#scoreFill').style.width=pct+'%';document.querySelector('#scoreValue').textContent=pct+'%';document.querySelector('#scoreTrack').setAttribute('aria-valuenow',pct);const milestones=[25,50,75,100];const earned=milestones.filter(x=>pct>=x).length;document.querySelector('#scoreStars').textContent='★'.repeat(earned)+'☆'.repeat(4-earned);const message=pct===100?'AMAZING! You coloured the whole '+current+'! 🎉':pct>=75?'Almost there! Your '+current+' looks wonderful! 🌟':pct>=50?'Halfway there! Keep exploring! 🦁':pct>=25?'Wonderful progress! You earned a star! ⭐':pct>0?'Great start! Every colour counts! 🎨':'Colour your first part to begin! 🎨';document.querySelector('#scoreMessage').textContent=message;document.querySelector('#badgeEarned').classList.toggle('show',pct===100);const reached=milestones.filter(x=>pct>=x).at(-1)||0;if(reached>lastMilestone){celebrate();if(reached===100)status('🎉 Fantastic! Colouring Star Badge unlocked!');else status('⭐ '+reached+'% complete! You earned another star!')}lastMilestone=reached;v10SavePage();}
+document.querySelectorAll('[data-cat]').forEach(b=>b.onclick=()=>{cat=b.dataset.cat;current=Object.keys(specs).find(k=>specs[k].cat===cat);color=specs[current].colors[0];history=[];future=[];strokes=[];lastMilestone=0;render()});document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;document.querySelectorAll('[data-tool]').forEach(x=>x.classList.toggle('active',x===b));wrap.className='canvasWrap '+tool;status(tool==='fill'?'Tap a labelled area to fill it!':tool==='brush'?'Draw with a finger, mouse or Apple Pencil!':'Erase your freehand strokes!')});document.querySelector('#undo').onclick=()=>{if(!history.length)return;future.push(snapshot());restore(history.pop());status('Undone!')};document.querySelector('#redo').onclick=()=>{if(!future.length)return;history.push(snapshot());restore(future.pop());status('Redone!')};document.querySelector('#clear').onclick=()=>{saveState();art.querySelectorAll('.region').forEach(e=>e.setAttribute('fill','white'));strokes=[];redrawStrokes();updateProgress();status('Ready for a fresh start!')};
+function resizeCanvas(){let r=wrap.getBoundingClientRect();canvas.width=Math.max(1,Math.round(r.width*devicePixelRatio));canvas.height=Math.max(1,Math.round(r.height*devicePixelRatio));redrawStrokes()};function coords(e){let r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width,y:(e.clientY-r.top)/r.height}}function redrawStrokes(){ctx.clearRect(0,0,canvas.width,canvas.height);for(let s of strokes){ctx.save();ctx.lineJoin='round';ctx.lineCap='round';ctx.strokeStyle=s.eraser?'rgba(0,0,0,1)':s.color;ctx.lineWidth=s.size*canvas.width/900;if(s.eraser)ctx.globalCompositeOperation='destination-out';ctx.beginPath();s.points.forEach((p,i)=>{let x=p.x*canvas.width,y=p.y*canvas.height;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});if(s.points.length===1){let p=s.points[0];ctx.lineTo(p.x*canvas.width+.01,p.y*canvas.height+.01)}ctx.stroke();ctx.restore()}}canvas.addEventListener('pointerdown',e=>{if(tool==='fill'||painting)return;e.preventDefault();saveState();painting=true;activePointer=e.pointerId;canvas.setPointerCapture(e.pointerId);let p=coords(e);strokes.push({eraser:tool==='eraser',color:palettes[color][1],size:+document.querySelector('#size').value,points:[p]});redrawStrokes()});canvas.addEventListener('pointermove',e=>{if(!painting||e.pointerId!==activePointer)return;e.preventDefault();strokes.at(-1).points.push(coords(e));redrawStrokes()});['pointerup','pointercancel'].forEach(evt=>canvas.addEventListener(evt,e=>{if(painting&&e.pointerId===activePointer){painting=false;activePointer=null;v10SavePage()}}));window.addEventListener('resize',resizeCanvas);window.addEventListener('pagehide',v10SavePage);
+async function download(){const out=document.createElement('canvas');out.width=1200;out.height=970;let o=out.getContext('2d');let clone=art.cloneNode(true);clone.setAttribute('width','900');clone.setAttribute('height','690');let blob=new Blob([new XMLSerializer().serializeToString(clone)],{type:'image/svg+xml'});let url=URL.createObjectURL(blob);let img=new Image();img.onload=()=>{o.fillStyle='#fff';o.fillRect(0,0,1200,970);o.drawImage(img,0,0,1200,920);o.drawImage(canvas,0,0,1200,920);o.fillStyle='#16324a';o.font='bold 28px Trebuchet MS';o.fillText('StudyAuraX Kids — '+current,28,956);let a=document.createElement('a');a.download=`StudyAuraX-${current.replaceAll(' ','-')}.png`;a.href=out.toDataURL('image/png');a.click();URL.revokeObjectURL(url);status('Your artwork has been saved! 🎨')};img.onerror=()=>status('Unable to save this picture. Please try again.');img.src=url}document.querySelector('#download').onclick=download;
+// An original simple melody synthesized locally, no external copyrighted recordings or tracking.
+let audioCtx=null,timer=null,noteIndex=0,playing=false;const melody=[0,2,4,7,4,2,0,2,4,5,7,5,4,2,0,4,7,9,7,4,2,0,-1,0];function note(){if(!audioCtx)return;let now=audioCtx.currentTime;let semi=melody[noteIndex++%melody.length],freq=440*Math.pow(2,(semi-9)/12);if(semi>=0){let osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(0.0001,now);gain.gain.exponentialRampToValueAtTime(Math.max(.001,+document.querySelector('#volume').value/100*.085),now+.03);gain.gain.exponentialRampToValueAtTime(.0001,now+.25);osc.connect(gain).connect(audioCtx.destination);osc.start(now);osc.stop(now+.27)}}document.querySelector('#musicBtn').onclick=async()=>{if(!playing){audioCtx??=new (window.AudioContext||window.webkitAudioContext)();await audioCtx.resume();note();timer=setInterval(note,320);playing=true;document.querySelector('#musicBtn').textContent='⏸ Pause'}else{clearInterval(timer);playing=false;document.querySelector('#musicBtn').textContent='▶ Play'}};
+const popularSongs=[
+['Baby Shark Dance','Pinkfong'],['Wheels on the Bus','CoComelon'],['Bath Song','CoComelon'],['Johny Johny Yes Papa','LooLoo Kids'],['Phonics Song with Two Words','ChuChu TV'],['Baa Baa Black Sheep','CoComelon'],['Baby Shark','CoComelon'],['Five Little Ducks','LooLoo Kids'],["If You're Happy and You Know It",'LooLoo Kids'],['Twinkle Twinkle Little Star','LooLoo Kids']];
+const list=document.querySelector('#songList');
+popularSongs.forEach(([song,artist],i)=>{const a=document.createElement('a');a.className='songLink';a.target='_blank';a.rel='noopener noreferrer';a.href='https://www.youtube.com/results?search_query='+encodeURIComponent(song+' '+artist+' official');const num=document.createElement('span');num.className='songNumber';num.textContent=String(i+1);const details=document.createElement('span');details.textContent=song;const small=document.createElement('small');small.textContent=artist+' · Open YouTube ↗';details.appendChild(small);a.append(num,details);list.appendChild(a)});
+const playlist=document.querySelector('#playlist'),toggle=document.querySelector('#playlistToggle');function showPlaylist(show){playlist.hidden=!show;toggle.setAttribute('aria-expanded',String(show));toggle.textContent=show?'✕ Hide songs':'🎶 Top 10 songs'}toggle.onclick=()=>showPlaylist(playlist.hidden);document.querySelector('#playlistClose').onclick=()=>showPlaylist(false);
+render();
+
+const v9categories=[
+['Animals','🦁','Wildlife, bears, foxes and more','#ffe0a2'],
+['Birds','🦉','Penguins, flamingos and owls','#ffd0e9'],
+['Sea Animals','🐬','Dolphins and whales','#a2e5ff'],
+['Plants & Flowers','🌻','Sunflowers, roses and nature','#b9f3ae'],
+['Insects','🦋','Butterflies and ladybugs','#e6c6ff'],
+['Vehicles','🚜','Tractors and other vehicles','#a6ccff'],
+['Fruits','🍎','Apples, carrots and more','#ffc3d7'],
+['Space','🚀','Rockets and planets','#c8c0ff'],
+['Buildings','🏠','Colour your dream house','#b5f4ef']
+];
+const grid=document.querySelector('#categoryGrid'),homeScreen=document.querySelector('#homeScreen'),gameArea=document.querySelector('#gameArea');
+v9categories.forEach(([name,emoji,desc,c])=>{
+  const b=document.createElement('button');b.className='discoveryCard';b.style.setProperty('--c',c);
+  b.innerHTML=`<span class="big">${emoji}</span><strong>${name}</strong><small>${desc} · ${Object.values(specs).filter(x=>x.cat===name).length} pages</small>`;
+  b.addEventListener('click',()=>openV9Category(name));grid.appendChild(b);
+  const side=document.querySelector('.sidebar');
+  if(!side.querySelector(`[data-cat="${name}"]`)){
+    const btn=document.createElement('button');btn.className='category';btn.dataset.cat=name;btn.textContent=emoji+' '+name;
+    side.insertBefore(btn,document.querySelector('#choices'));
+    btn.addEventListener('click',()=>openV9Category(name));
+  }
+});
+function openV9Category(name){
+ const first=Object.keys(specs).find(k=>specs[k].cat===name);
+ if(!first)return;
+ cat=name;current=first;history=[];future=[];strokes=[];lastMilestone=0;
+ homeScreen.hidden=true;gameArea.hidden=false;render();window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelector('#homeButton').addEventListener('click',()=>{gameArea.hidden=true;homeScreen.hidden=false;window.scrollTo({top:0,behavior:'smooth'})});
+gameArea.hidden=true;homeScreen.hidden=false;
+</script></body></html>
